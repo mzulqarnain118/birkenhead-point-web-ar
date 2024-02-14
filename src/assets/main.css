@@ -40,21 +40,21 @@ a,
 
 @font-face {
   font-family: Poppins-Regular;
-  src: url(../fonts/Poppins-Regular.ttf);
+  src: url(./fonts/Poppins-Regular.ttf);
 }
 @font-face {
   font-family: Poppins-Medium;
-  src: url(../fonts/Poppins-Medium.ttf);
+  src: url(./fonts/Poppins-Medium.ttf);
 }
 @font-face {
   font-family: Poppins-SemiBold;
-  src: url(../fonts/Poppins-SemiBold.ttf);
+  src: url(./fonts/Poppins-SemiBold.ttf);
 }
 body {
   font-family: Poppins-Regular;
 }
 .screen {
-  background: url(../images/BHP_Home_Image.png);
+  background: url(./images/BHP_Home_Image.png);
   color: var(--White, #FFF);
   background-repeat: no-repeat;
   background-size: cover;
@@ -187,7 +187,7 @@ p {
 }
 .welcome .form-check-input:checked[type=checkbox] {
     --bs-form-check-bg-image: none;
-    content: url(../images/checkbox-checked.png);
+    content: url(./images/checkbox-checked.png);
     border: none;
     background-color: transparent;
 }

@@ -11,7 +11,7 @@
   <div class="screen welcome">
 <div class="screen-wrapper">
     <div class="logo text-center">
-		<img width="220" src="images/BHP_Logo.png">
+		<img width="220" src="../assets/images/BHP_Logo.png">
     </div>
 	<h1>WELCOME TO BHP AR EXPERIENCE!</h1>
 	<p>See Birkenhead Point's history come to life in immersive augmented reality!</p>
