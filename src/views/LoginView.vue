@@ -32,10 +32,6 @@
 			<button type="submit" class="btn btn-primary">Continue</button>
 	    </div>
 	</form>
-    <div class="p-absolute top-bar"></div>
-    <div class="p-absolute left-bar"></div>
-    <div class="p-absolute right-bar"></div>
-    <div class="p-absolute bottom-bar"></div>
       <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
 </div>
 </div>

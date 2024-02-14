@@ -62,12 +62,12 @@
     </div>
   </div>
 </div>
-    <p class="position-absolute left-center-text">ROSEBY STREET</p>
-    <p class="position-absolute right-center-text">BIRKENHEAD MARINA</p>
+    <!-- <p class="position-absolute left-center-text">ROSEBY STREET</p>
+    <p class="position-absolute right-center-text">BIRKENHEAD MARINA</p> -->
   </div>
   <div class="tab-pane fade" id="scan-qr-code" role="tabpanel" aria-labelledby="scan-qr-code-tab">scan-qr-code</div>
   <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
-  <div class="position-relative">
+  <div class="plr-10">
     <div class="logo d-flex justify-content-center">
 		<img width="130" src="../assets/images/BHP_Logo-With-Black-Text.png">
     </div>
@@ -75,8 +75,8 @@
     <p>Birkenhead Point continues to be a vibrant centre for our customers. As Sydney's best-loved premium brand outlet with more than 160 local and international brands, water-front dining and exciting entertainment our customers can expect a day out nothing short of memorable when visiting. Discover what’s currently on at Birkenhead Point here:</p>
     <a href="https://www.birkenheadpoint.com.au/">https://www.birkenheadpoint.com.au/</a>
   </div>
-    <div class="image-credits">
-      <a href="" class="strong">Image Credits</a>
+    <div class="image-credits text-center">
+      <a href="">Image Credits</a>
     </div>
 	    <div class="text-center">
 			<button type="submit" class="btn btn-primary logout">Logout</button>
@@ -103,11 +103,11 @@
     </button>
   </li>
 </ul>
-    <div class="position-absolute top-bar"></div>
+    <!-- <div class="position-absolute top-bar"></div>
     <div class="position-absolute top-bar"></div>
     <div class="position-absolute left-bar"></div>
     <div class="position-absolute right-bar"></div>
-    <div class="position-absolute bottom-bar"></div>
+    <div class="position-absolute bottom-bar"></div> -->
 </div>
 </div>
 </template>
