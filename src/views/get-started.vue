@@ -1,11 +1,10 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/styles.css">
+<script setup></script>
 
+<template>
 <div class="screen get-started">
 <div class="screen-wrapper">
-    <div class="logo text-center">
-		<img width="220" src="images/BHP_Logo_get_started.png">
+    <div class="logo d-flex justify-content-center">
+		<img width="220" src="../assets/images/BHP_Logo_get_started.png">
     </div>
 	<h1>See history come to life in Immersive AR</h1>
 	<p>Birkenhead point has a rich and diverse history, spanning thousands of years. Now you can delve into moments from our past like never before.</p>
@@ -13,21 +12,21 @@
     <div class="how-it-works">
     	<h6>How it works</h6>
     	<div class="d-flex align-items-center">
-			<img src="images/step-1.png">
+			<img src="../assets/images/step-1.png">
 	    	<div class="text">
 	    		<strong>Step 1</strong>
 				<p>Look for the activation cards and scan the QR code to activate the camera.</p>
 	    	</div>
     	</div>
     	<div class="d-flex align-items-center">
-			<img src="images/step-2.png">
+			<img src="../assets/images/step-2.png">
 	    	<div class="text">
 	    		<strong>Step 2</strong>
 				<p>Scan the QR code to launch the experience.</p>
 	    	</div>
     	</div>
     	<div class="d-flex align-items-center">
-			<img src="images/step-3.png">
+			<img src="../assets/images/step-3.png">
 	    	<div class="text">
 	    		<strong>Step 3</strong>
 				<p>Point your camera at the unique image marker and watch it come to life.</p>
@@ -39,3 +38,6 @@
     </div>
 </div>
 </div>
+</template>
+
+<style scoped></style>

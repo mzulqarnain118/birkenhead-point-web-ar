@@ -2,6 +2,8 @@
 import { RouterLink, RouterView } from "vue-router";
 import Login from "./views/LoginView.vue";
 import Splash from "./views/Splash.vue";
+import Map from "./views/map.vue";
+import GetStarted from "./views/get-started.vue";
 </script>
 
 <template>
@@ -21,7 +23,7 @@ import Splash from "./views/Splash.vue";
   </header>
 
   <RouterView /> -->
-<Splash/>
+<Map/>
 </template>
 
 <style scoped>

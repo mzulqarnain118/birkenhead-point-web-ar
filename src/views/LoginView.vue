@@ -10,7 +10,7 @@
   </div> -->
   <div class="screen welcome">
 <div class="screen-wrapper">
-    <div class="logo text-center">
+    <div class="logo d-flex justify-content-center">
 		<img width="220" src="../assets/images/BHP_Logo.png">
     </div>
 	<h1>WELCOME TO BHP AR EXPERIENCE!</h1>
@@ -32,6 +32,10 @@
 			<button type="submit" class="btn btn-primary">Continue</button>
 	    </div>
 	</form>
+    <div class="p-absolute top-bar"></div>
+    <div class="p-absolute left-bar"></div>
+    <div class="p-absolute right-bar"></div>
+    <div class="p-absolute bottom-bar"></div>
       <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
 </div>
 </div>

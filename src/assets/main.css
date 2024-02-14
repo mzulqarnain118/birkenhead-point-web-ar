@@ -9,10 +9,9 @@
 	font-weight: normal; */
 }
 
-a,
-.green {
+a {
 	text-decoration: none;
-	color: hsla(160, 100%, 37%, 1);
+  color: var(--Primary04, #E5441E);
 	transition: 0.4s;
 }
 
@@ -70,8 +69,11 @@ a,
 body {
   font-family: Poppins;
 }
-.bg-color {
+.bg-color1 {
   background-color: #FEF4F0;
+}
+.bg-color2 {
+  background-color: rgb(15 13 11 / 51%);
 }
 .screen {
   background: url(./images/BHP_Home_Image.png);
@@ -79,11 +81,13 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
-.welcome .screen-wrapper, .get-started .screen-wrapper {
-  background-color: rgb(15 13 11 / 51%);
+.welcome .screen-wrapper, .get-started .screen-wrapper, .map .screen-wrapper {
   padding: 0 24px;
   height: 100vh;
   margin: 0 auto;
+}
+.map .screen-wrapper {
+  padding: 0 15px;
 }
 h1{
   color: var(--Primary, #FFB1A3);
@@ -158,7 +162,7 @@ p {
   background-color: var(--Primary, #FFB1A3) !important;
   height: 56px;
   padding: 12px 49px;
-  width: 340;
+  width: 340px;
   border: 0;
   border-radius: var(--Numbers-Raidus-Raidus-Circle, 30px);
   margin-bottom: 18px;
@@ -279,66 +283,62 @@ p {
   padding: 40px;
 }
 .splash .logo {
-    position: absolute;
-    left: 50%;
-    top: 42%;
-    transform: translate(-50%, -50%);
-    max-width: 222px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  max-width: 222px;
 }
 .splash p {
   max-width: 190px;
   margin-top: -40px !important;
 }
 .top-bar{
-  position: absolute;
     width: 100%;
     height: 30px;
     left: 0;
     top: 0;
-    background-color: FFB1A3;
-    opacity: .3;
+    background-color: #FFB1A3;
+    opacity: .5;
 }
 .left-bar{
-  position: absolute;
     width: 30px;
     height: 100%;
     left: 0;
     top: 0;
-    background-color: FFB1A3;
-    opacity: .3;
+    background-color: #FFB1A3;
+    opacity: .5;
 }
 .right-bar{
-  position: absolute;
     width: 30px;
     height: 100%;
     right: 0;
     top: 0;
-    background-color: FFB1A3;
-    opacity: .3;
+    background-color: #FFB1A3;
+    opacity: .5;
 }
 .bottom-bar{
-  position: absolute;
     width: 100%;
     height: 30px;
     left: 0;
     bottom: 0;
-    background-color: FFB1A3;
-    opacity: .3;
+    background-color: #FFB1A3;
+    opacity: .5;
 }
 .map #nav-tabs-content {
-    padding: 50px 15px;
+    padding: 68px 0;
 }
 .map #nav-tabs {
     position: absolute;
     left: 50%;
-    bottom: 50px;
+    bottom: 28px;
     transform: translate(-50%, 10px);
     border: none;
-    width: 325;
+    width: 325px;
     height: 68px;
     background-color: #F4AE9D;
     border-radius: 35px;
     padding: 0 25px;
+    opacity: 0.8;
 }
 .map #floor-tabs {
     border: none;
@@ -348,6 +348,8 @@ p {
   min-width: 84px;
   line-height: 34px;
   border-radius: 34px;
+  font-size: 12.8px;
+  font-weight: 500;
 }
 .map #floor-tabs .nav-link.active {
     background-color: #F4AE9D !important;
@@ -355,13 +357,93 @@ p {
 }
 .map #nav-tabs .nav-link, .map #floor-tabs .nav-link{
   border: none;
+  padding: 0;
 }
 .map #nav-tabs .nav-link.active, .map #nav-tabs .nav-link:focus, .map #floor-tabs .nav-link.active, .map #floor-tabs .nav-link:focus {
   background-color: transparent;
 }
 .map #nav-tabs img {
-  width: 30px;
+  width: 65px;
 }
-
+/* .map #nav-tabs .nav-link img:first-child {
+  display: none;
+} */
+.map #nav-tabs .nav-link.active img:first-child {
+  display: none;
+}
+.map #nav-tabs .nav-link.active img:last-child {
+  display: block !important;
+}
+.map #nav-tabs .nav-link img:last-child {
+  display: none;
+}
+/* #floor-tabs-content {
+  padding: 0 40px;
+} */
+.left-center-text {
+  rotate: -90deg;
+  left: -36px;
+  top: 47%;
+  font-size: 10.041px;
+  font-weight: 600;
+  z-index: 1;
+}
+.right-center-text {
+  rotate: -90deg;
+  right: -50px;
+  top: 47%;
+  font-size: 10.041px;
+  font-weight: 600;
+  z-index: 1;
+}
+.info-card {
+  width: 100%;
+  background-color: white;
+  left: 0;
+  border-radius: 8px;
+  bottom: 85px;
+  gap: 8px;
+}
+.info-card .strong {
+  font-size: 16px;
+font-weight: 600;
+line-height: 150%;
+}
+.info-card .text {
+  font-size: 12px;
+font-weight: 500;
+}
+#info .position-relative {
+  z-index: 2;
+  padding: 0 10px;
+}
+#info .position-relative img {
+  margin-bottom: 24px;
+}
+#info .position-relative p {
+  margin-bottom: 8px;
+}
+.tab-content>.tab-pane > img {
+  padding: 32% 0;
+}
+.image-credits {
+  padding: 19px;
+  border-radius: 24px;
+  background: rgba(255, 254, 254, 0.80);
+  margin: 10px 0;
+}
+.image-credits a {
+  font-size: 16px;
+font-weight: 500;
+line-height: 150%;
+letter-spacing: 0.16px;
+  color: black;
+}
+.logout {
+  opacity: 0.8;
+  width: 357px;
+  font-weight: 600;
+  line-height: 24px;
+}
 
 
