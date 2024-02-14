@@ -1,6 +1,8 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
 import Login from "./views/LoginView.vue";
+import Splash from "./views/Splash.vue";
+import Splash from "./views/Splash.vue";
 </script>
 
 <template>
@@ -20,7 +22,7 @@ import Login from "./views/LoginView.vue";
   </header>
 
   <RouterView /> -->
-<Login/>
+<Splash/>
 </template>
 
 <style scoped>
