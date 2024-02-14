@@ -1,31 +1,27 @@
 <template>
-  <main>
+  <Splash/>
+
+  <!-- <main>
     <TheWelcome />
-    <!-- Embed SVG and assign an ID for manipulation -->
-    <svg id="svgElement" width="100" height="100" @click="manipulateSVG">
-      <!-- SVG content -->
-      <path d="M50 10 L10 90 L90 90 Z" fill="red" />
+    <svg ref="svgElement" width="100" height="100" @click="manipulateSVG">
+      <path d="M50 10 L10 90 L90 90 Z" :fill="svgFillColor" />
     </svg>
 
-    <!-- Enable/Disable Camera Buttons -->
     <div>
       <button @click="toggleCamera" v-text="isCameraEnabled ? 'Disable Camera' : 'Enable Camera'"></button>
     </div>
 
-    <!-- AR.js Scene -->
-    <div v-if="isCameraEnabled" v-show="isCameraEnabled">
+    <div v-if="isCameraEnabled" v-show="isCameraEnabled" class="arjs-scene">
       <div class="arjs-loader">
         <div>Loading, please wait...</div>
       </div>
-      
-      <!-- A-Frame Scene -->
+
       <a-scene
         vr-mode-ui="enabled: false;"
         renderer="logarithmicDepthBuffer: true;"
         embedded
         arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
       >
-        <!-- NFT Anchor for Image Tracking -->
         <a-nft
           type="nft"
           url="../assets/Location_1_0046.png"
@@ -34,7 +30,6 @@
           smoothTolerance=".01"
           smoothThreshold="5"
         >
-          <!-- Content to Show -->
           <a-entity
             gltf-model="../assets/Location_02.fbx"
             scale="5 5 5"
@@ -43,44 +38,45 @@
           </a-entity>
         </a-nft>
 
-        <!-- Static Camera -->
         <a-entity camera></a-entity>
       </a-scene>
     </div>
-  </main>
+  </main> -->
 </template>
 
-<script>
-import { ref } from 'vue';
+<script setup>
+import { ref,onMounted } from 'vue';
 import TheWelcome from "@/components/TheWelcome.vue";
+import Splash from "./Splash.vue";
+import { useRouter } from "vue-router";
 
-export default {
-  components: {
-    TheWelcome
-  },
-  setup() {
-    const isCameraEnabled = ref(false);
+// Use the useRouter hook to access the router instance
+const router = useRouter();
 
-    const toggleCamera = () => {
-      isCameraEnabled.value = !isCameraEnabled.value;
-    };
+// Use the setTimeout function to redirect to the login page after 3 seconds
+// Use the setTimeout function to redirect to the login page after 3 seconds
+onMounted(() => {
+  setTimeout(() => {
+    router.push('/login');
+  }, 3000);
+});
 
-    const manipulateSVG = () => {
-      // Perform SVG manipulation here
-      const svgElement = document.getElementById('svgElement');
-      if (svgElement) {
-        // Example manipulation - change fill color
-        svgElement.querySelector('path').setAttribute('fill', 'blue');
-      }
-    };
+const svgFillColor = ref('red');
+const isCameraEnabled = ref(false);
 
-    return {
-      isCameraEnabled,
-      toggleCamera,
-      manipulateSVG
-    };
+const toggleCamera = () => {
+  isCameraEnabled.value = !isCameraEnabled.value;
+};
+
+const manipulateSVG = () => {
+  // Perform SVG manipulation here
+  const svgElement = document.getElementById('svgElement');
+  if (svgElement) {
+    // Example manipulation - change fill color
+    svgFillColor.value = 'blue';
   }
 };
+
 </script>
 
 <style scoped>
