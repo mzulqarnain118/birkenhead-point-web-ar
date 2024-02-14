@@ -280,6 +280,12 @@
 		<text transform="matrix(0 -1 1 0 173.7526 395.3577)" class="st3 st10 st8">SHOP 311 / 312</text>
 		<text transform="matrix(0 -1 1 0 401.2838 401.222)" class="st3 st10 st8">SHOP 100</text>
 		<text transform="matrix(0 -1 1 0 182.1162 531.2156)" class="st3 st10 st8">KIOSK K5</text>
+		<g>
+			<text transform="matrix(0 -1 1 0 543.5704 454.1917)" class="st3 st7 st11">BIRKENHEAD MARINA</text>
+		</g>
+		<g>
+			<text transform="matrix(0 -1 1 0 29.892 437.1214)" class="st3 st7 st11">ROSEBY STREET</text>
+		</g>
 	</g>
 </g>
 </svg>
