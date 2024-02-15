@@ -1,4 +1,12 @@
-<script setup></script>
+<script setup>
+import { useRouter } from "vue-router";
+import { clearLocalStorage } from "../../utils";
+const router = useRouter();
+const logout = () => {
+   clearLocalStorage()
+  router.push("/login");
+}
+</script>
 
 <template>
 <div class="map">
@@ -84,7 +92,7 @@
       </a>
     </div>
 	    <div class="text-center">
-			<button type="submit" class="btn btn-primary logout">Logout</button>
+			<button @click="logout" class="btn btn-primary logout">Logout</button>
 	    </div>
   </div>
 </div>

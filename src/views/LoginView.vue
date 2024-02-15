@@ -54,7 +54,8 @@
 <script setup>
 import {
   signUpWithEmailAndPassword,
-  signInWithEmailPassword,getUserByEmail
+  signInWithEmailPassword,
+  getUserByEmail,
 } from "./firebase";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
@@ -66,9 +67,9 @@ const errorMessage = ref("");
 const router = useRouter();
 
 const register = async () => {
-  const auth=await getLocal("token")
-      ? signInWithEmailPassword
-    : signUpWithEmailAndPassword
+  const auth = (await getLocal("token"))
+    ? signInWithEmailPassword
+    : signUpWithEmailAndPassword;
 
   try {
     // const userByEmail = await getUserByEmail(email.value);
@@ -94,7 +95,7 @@ const register = async () => {
 
 <style scoped>
 body {
-    background: url(/src/assets/images/BHP_Home_Image.png);
+  background: url(/src/assets/images/BHP_Home_Image.png);
 }
 .login {
   margin: auto;
