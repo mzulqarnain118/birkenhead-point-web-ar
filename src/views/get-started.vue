@@ -9,9 +9,12 @@ const next = () => {
 <template>
 <div class="screen get-started">
 <div class="screen-wrapper">
-    <div class="logo d-flex justify-content-center">
-		<img width="220" src="../assets/images/BHP_Logo_get_started.png">
-    </div>
+    <div class="d-flex justify-content-center">
+    <div class="logo d-flex align-items-center">
+        <img width="80" src="../assets/images/BHP_Logo.gif" />
+        <p>Birkenhead Point Augmented Reality Experience</p>
+      </div>
+      </div>
 	<h1>See history come to life in Immersive AR</h1>
 	<p>Birkenhead point has a rich and diverse history, spanning thousands of years. Now you can delve into moments from our past like never before.</p>
 	<p>There are 10 ar activation points around the centre, each with a different image and story to explore.</p>

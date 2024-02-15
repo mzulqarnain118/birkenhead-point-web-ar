@@ -1,15 +1,16 @@
 <script setup>
 import { RouterLink,useRouter, RouterView } from "vue-router";
-import Map from "./views/map.vue";
+import Login from "./views/LoginView.vue";
 import GetStarted from "./views/get-started.vue";
-import LoginView from "./views/LoginView.vue";
-import { watch, ref } from 'vue';
+import Splash from "./views/Splash.vue";
+import Map from "./views/map.vue";
+import LocationDetails from "./views/LocationDetails.vue";
+import ImageCredits from "./views/ImageCredits.vue";
+import { watch } from 'vue';
 
 const router = useRouter();
-const currentURl = ref(router.currentRoute.value.path);
 
 watch(() => router.currentRoute.value.path, (newPath) => {
-  currentURl.value = newPath.slice(1);
   document.body.classList.add(newPath.slice(1));
 });
 </script>
@@ -22,10 +23,8 @@ watch(() => router.currentRoute.value.path, (newPath) => {
         <RouterLink to="/login">Login</RouterLink>
       </nav>
     </div> -->
-  <div :class="currentURl">
-  <!-- <RouterView />  -->
-  <LoginView /> 
-</div>
+  <RouterView /> 
+  <!-- <Splash />  -->
 <!-- <Map/> -->
 </template>
 

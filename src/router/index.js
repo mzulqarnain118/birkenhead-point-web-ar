@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import Splash from "../views/Splash.vue";
 import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
 import GetStarted from "../views/get-started.vue";
@@ -11,6 +12,11 @@ import ImageCredits from "../views/ImageCredits.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    {
+      path: "/splash",
+      name: "splash",
+      component: Splash,
+    },
     {
       path: "/",
       name: "home",
@@ -45,7 +51,7 @@ const router = createRouter({
       meta: { requiresAuth: true }, // Mark the route as requiring authentication
     },
     {
-      path: "/ImageCredits",
+      path: "/image-credits",
       name: "ImageCredits",
       component: ImageCredits,
       meta: { requiresAuth: true }, // Mark the route as requiring authentication

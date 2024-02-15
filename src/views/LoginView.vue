@@ -1,8 +1,9 @@
 <template>
   <div class="screen welcome">
     <div class="screen-wrapper">
-      <div class="logo d-flex justify-content-center">
-        <img width="220" src="../assets/images/BHP_Logo.png" />
+    <div class="logo d-flex flex-column align-items-center">
+        <img width="220" src="../assets/images/BHP_Logo.gif" />
+        <p class="m-0 m-auto text-center">Birkenhead Point Augmented Reality Experience</p>
       </div>
       <h1>WELCOME TO BHP AR EXPERIENCE!</h1>
       <p>
@@ -93,9 +94,6 @@ const register = async () => {
 </script>
 
 <style scoped>
-body {
-    background: url(/src/assets/images/BHP_Home_Image.png);
-}
 .login {
   margin: auto;
   text-align: center;
