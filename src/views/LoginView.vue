@@ -1,65 +1,92 @@
 <template>
-  <!-- <div class="login">
-    <h1>Login</h1>
-    <form @submit.prevent="login">
-      <input type="email" v-model="email" placeholder="Email" required>
-      <input type="password" v-model="password" placeholder="Password" required>
-      <button type="submit">Login</button>
-    </form>
-    <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
-  </div> -->
   <div class="screen welcome">
-<div class="screen-wrapper">
-    <div class="logo d-flex justify-content-center">
-		<img width="220" src="../assets/images/BHP_Logo.png">
-    </div>
-	<h1>WELCOME TO BHP AR EXPERIENCE!</h1>
-	<p>See Birkenhead Point's history come to life in immersive augmented reality!</p>
-	<form @submit.prevent="login" action="get-started.html" class="m-0">
-		<div class="form-floating">
-		  <input type="email" v-model="email" class="form-control" id="email-address" placeholder="Enter email" name="email" required>
-		  <label for="email">Email address</label>
-		</div>
-	    <div>
-	      <div class="form-check text-left d-flex align-items-center ps-0">
-	        <input class="form-check-input" type="checkbox" id="disabledFieldsetCheck">
-	        <label class="form-check-label mt-0" for="disabledFieldsetCheck">
-	        	I agree to the <a href="">BHP Privacy Policy</a> and <a href="">Terms and Conditions</a>
-	        </label>
-	      </div>
-	    </div>
-	    <div class="text-center">
-			<button type="submit" class="btn btn-primary">Continue</button>
-	    </div>
-	</form>
+    <div class="screen-wrapper">
+      <div class="logo d-flex justify-content-center">
+        <img width="220" src="../assets/images/BHP_Logo.png" />
+      </div>
+      <h1>WELCOME TO BHP AR EXPERIENCE!</h1>
+      <p>
+        See Birkenhead Point's history come to life in immersive augmented
+        reality!
+      </p>
+      <form @submit.prevent="register" action="get-started.html" class="m-0">
+        <div class="form-floating">
+          <input
+            type="email"
+            v-model="email"
+            class="form-control"
+            id="email-address"
+            placeholder="Enter email"
+            name="email"
+            required
+          />
+          <label for="email">Email address</label>
+          <input
+            type="password"
+            v-model="password"
+            placeholder="Password"
+            hidden
+            required
+          />
+        </div>
+        <div>
+          <div class="form-check text-left d-flex align-items-center ps-0">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="disabledFieldsetCheck"
+            />
+            <label class="form-check-label mt-0" for="disabledFieldsetCheck">
+              I agree to the <a href="#">BHP Privacy Policy</a> and
+              <a href="#">Terms and Conditions</a>
+            </label>
+          </div>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Continue</button>
+        </div>
+      </form>
       <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
-</div>
-</div>
+    </div>
+  </div>
 </template>
 
-<script>
-import { signUpWithEmailAndPassword } from './firebase';
+<script setup>
+import {
+  signUpWithEmailAndPassword,
+  signInWithEmailPassword,
+} from "./firebase";
+import { useRouter } from "vue-router";
+import { ref } from "vue";
+import { getLocal, setLocal } from "../../utils";
 
-export default {
-  name: 'LoginView',
-  data() {
-    return {
-      email: '',
-      password: '',
-      errorMessage: ''
-    };
-  },
-  methods: {
-    async login() {
-      try {
-        const response = await signUpWithEmailAndPassword(this.email, this.password);
-        console.log('Login successful:', response);
-        // Redirect to another page or perform any action upon successful login
-      } catch (error) {
-        console.error('Login error:', error);
-        this.errorMessage = error.message;
-      }
+const email = ref("");
+const password = ref("12345678"); // Set default value for the password
+const errorMessage = ref("");
+const router = useRouter();
+
+const register = async () => {
+  const auth=await getLocal("token")
+      ? signInWithEmailPassword
+    : signUpWithEmailAndPassword
+
+  try {
+    const response = await auth(email.value, password.value);
+
+    if (response?.user?.accessToken) {
+      console.log("🚀 ~ login ~ response:-------register------", response);
+
+      setLocal("token", response.user.accessToken); // Save token in localStorage
+      setLocal("userEmail", response.user.email); // Save token in localStorage
+      setLocal("userId", response.user.uid); // Save token in localStorage
+      router.push("/get-started"); // Redirect to the next page
+    } else {
+      console.log("🚀 ~ login ~ response:", response);
+      errorMessage.value = "Incorrect email or password"; // Show error for incorrect info
     }
+  } catch (error) {
+    console.error("Login error:", error);
+    errorMessage.value = error.message;
   }
 };
 </script>

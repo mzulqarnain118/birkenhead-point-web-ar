@@ -1,0 +1,18 @@
+<template>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>404 - Page Not Found</h1>
+        <p>The page you are looking for does not exist.</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+
+</script>
+
+<style>
+/* Add custom styles for the 404 page if needed */
+</style>

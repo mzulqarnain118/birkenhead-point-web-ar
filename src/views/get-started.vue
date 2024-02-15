@@ -1,4 +1,10 @@
-<script setup></script>
+<script setup>import { useRouter } from "vue-router";
+const router = useRouter();
+const next = () => {
+  router.push("/map");
+}
+</script>
+
 
 <template>
 <div class="screen get-started">
@@ -34,7 +40,7 @@
     	</div>
     </div>
     <div class="text-center">
-		<button type="submit" class="btn btn-primary">Continue</button>
+		<button type="submit" class="btn btn-primary" @click="next">Continue</button>
     </div>
 </div>
 </div>
