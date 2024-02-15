@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from 'vue';
 import { useRouter } from "vue-router";
 import { clearLocalStorage } from "../../utils";
 const router = useRouter();
@@ -6,6 +7,21 @@ const logout = () => {
    clearLocalStorage()
   router.push("/login");
 }
+const svgFillColor = ref('red');
+const isCameraEnabled = ref(false);
+
+const toggleCamera = () => {
+  isCameraEnabled.value = !isCameraEnabled.value;
+};
+
+const manipulateSVG = () => {
+  // Perform SVG manipulation here
+  const svgElement = document.getElementById('svgElement');
+  if (svgElement) {
+    // Example manipulation - change fill color
+    svgFillColor.value = 'blue';
+  }
+};
 </script>
 
 <template>
@@ -73,7 +89,41 @@ const logout = () => {
     <!-- <p class="position-absolute left-center-text">ROSEBY STREET</p>
     <p class="position-absolute right-center-text">BIRKENHEAD MARINA</p> -->
   </div>
-  <div class="tab-pane fade" id="scan-qr-code" role="tabpanel" aria-labelledby="scan-qr-code-tab">scan-qr-code</div>
+  <div class="tab-pane fade" id="scan-qr-code" role="tabpanel" aria-labelledby="scan-qr-code-tab">
+    <div>
+      <button @click="toggleCamera" v-text="isCameraEnabled ? 'Disable Camera' : 'Enable Camera'"></button>
+    </div>
+
+    <div v-if="isCameraEnabled" v-show="isCameraEnabled" class="arjs-scene">
+      <div class="arjs-loader">
+        <div>Loading, please wait...</div>
+      </div>
+
+      <a-scene
+        vr-mode-ui="enabled: false;"
+        renderer="logarithmicDepthBuffer: true;"
+        embedded
+        arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+      >
+        <a-nft
+          type="nft"
+          url="../assets/Location_1_0046.png"
+          smooth="true"
+          smoothCount="10"
+          smoothTolerance=".01"
+          smoothThreshold="5"
+        >
+          <a-entity
+            gltf-model="../assets/Location_02.fbx"
+            scale="5 5 5"
+            position="50 150 0"
+          >
+          </a-entity>
+        </a-nft>
+
+        <a-entity camera></a-entity>
+      </a-scene>
+    </div></div>
   <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
   <div class="plr-10">
     <div class="logo d-flex flex-column align-items-center">
@@ -125,4 +175,8 @@ const logout = () => {
 </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+/* Styles */
+.arjs-scene {
+  display: none; /* Hide AR.js scene when camera is disabled */
+}</style>

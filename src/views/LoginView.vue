@@ -38,8 +38,8 @@
               id="disabledFieldsetCheck"
             />
             <label class="form-check-label mt-0" for="disabledFieldsetCheck">
-              I agree to the <a href="#">BHP Privacy Policy</a> and
-              <a href="#">Terms and Conditions</a>
+              I agree to the <a href="https://www.mirvac.com/privacy-policy" target="_blank">BHP Privacy Policy</a> and
+              <a href="https://www.mirvac.com/conditions-of-use" target="_blank">Terms and Conditions</a>
             </label>
           </div>
         </div>
@@ -56,7 +56,6 @@
 import {
   signUpWithEmailAndPassword,
   signInWithEmailPassword,
-  getUserByEmail,
 } from "./firebase";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
@@ -73,12 +72,9 @@ const register = async () => {
     : signUpWithEmailAndPassword;
 
   try {
-    // const userByEmail = await getUserByEmail(email.value);
     const response = await auth(email.value, password.value);
 
     if (response?.user?.accessToken) {
-      console.log("🚀 ~ login ~ response:-------register------", response);
-
       setLocal("token", response.user.accessToken); // Save token in localStorage
       setLocal("userEmail", response.user.email); // Save token in localStorage
       setLocal("userId", response.user.uid); // Save token in localStorage
