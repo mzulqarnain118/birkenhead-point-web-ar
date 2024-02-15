@@ -1,9 +1,11 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
 import Login from "./views/LoginView.vue";
+import GetStarted from "./views/get-started.vue";
 import Splash from "./views/Splash.vue";
 import Map from "./views/map.vue";
-import GetStarted from "./views/get-started.vue";
+import LocationDetails from "./views/LocationDetails.vue";
+import ImageCredits from "./views/ImageCredits.vue";
 </script>
 
 <template>
@@ -23,7 +25,7 @@ import GetStarted from "./views/get-started.vue";
   </header>
 
   <RouterView /> -->
-<Map/>
+<Login/>
 </template>
 
 <style scoped>

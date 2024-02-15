@@ -68,6 +68,7 @@ a {
 
 body {
   font-family: Poppins;
+  background-color: #FEF4F0;
 }
 .nav-link {
   color: #191B1E;
@@ -83,14 +84,19 @@ body {
   color: var(--White, #FFF);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 .welcome .screen-wrapper, .get-started .screen-wrapper, .map .screen-wrapper {
-  padding: 0 24px;
-  height: 100vh;
+  padding: 0 15px;
+  /* height: 100vh; */
   margin: 0 auto;
+  /* overflow-y: scroll; */
 }
-.map .screen-wrapper {
+/* .map .screen-wrapper {
   padding: 0 14px;
+} */
+.map #locations {
+  padding: 0 9px;
 }
 h1{
   color: var(--Primary, #FFB1A3);
@@ -327,13 +333,12 @@ p {
     background-color: #FFB1A3;
     opacity: .5;
 } */
-.map #nav-tabs-content {
-    padding: 68px 0;
-}
+/* .map #nav-tabs-content {
+    padding: 45px 0;
+} */
 .map #nav-tabs {
-    position: absolute;
     left: 50%;
-    bottom: 28px;
+    bottom: 18px;
     transform: translate(-50%, 10px);
     border: none;
     width: 325px;
@@ -341,9 +346,11 @@ p {
     background-color: #F4AE9D;
     border-radius: 35px;
     padding: 0 25px;
-    opacity: 0.8;
+    /* opacity: 0.8; */
+    z-index: 1;
 }
 .map #floor-tabs {
+  padding-top: 45px;
     border: none;
 }
 .map #floor-tabs .nav-link {
@@ -402,12 +409,14 @@ p {
   z-index: 1;
 } */
 .info-card {
-  width: 100%;
+  width: 335px;
   background-color: white;
-  left: 0;
+  transform: translate(-50%, 0);
+  left: 50%;
   border-radius: 8px;
-  bottom: 70px;
+  bottom: 107px;
   gap: 8px;
+  overflow: hidden;
 }
 .info-card .strong {
   font-size: 16px;
@@ -418,10 +427,24 @@ line-height: 150%;
   font-size: 12px;
 font-weight: 500;
 }
+#scan-qr-code {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+#info .logo p {
+  max-width: 150px;
+  margin-top: -28px !important;
+  font-size: 10px;
+  font-weight: 600;
+}
 #info .plr-10 {
   padding: 0 10px;
 }
-#info img {
+#info .logo {
+  margin-top: 40px;
   margin-bottom: 24px;
 }
 #info p {
@@ -430,15 +453,21 @@ font-weight: 500;
 .tab-content>.tab-pane > img {
   padding: 32% 0;
 }
-.image-credits {
+.cta-image-credits {
+  width: 358px;
   height: 62px;
   padding: 19px;
   border-radius: 24px;
   background: rgba(255, 254, 254, 0.80);
   margin: 10px 0;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.16px;
+  color: black;
 }
-.image-credits a {
+.cta-image-credits a {
   position: absolute;
+  text-align: center;
   line-height: 62px !important;
   left: 0;
   bottom: 0;
@@ -450,11 +479,85 @@ font-weight: 500;
   letter-spacing: 0.16px;
   color: black;
 }
+.cta-image-credits svg {
+  position: absolute;
+  right: 19px;
+  top: 50%;
+  transform: translate(0, -50%);
+}
 .logout {
   opacity: 0.8;
   width: 357px;
   font-weight: 600;
   line-height: 24px;
+}
+.screen.location-detail {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  top: 0;
+}
+.screen.location-detail div.position-fixed {
+  bottom: 53px;
+  left: 0;
+  padding: 0 16px;
+}
+.screen.location-detail h2 {
+  font-size: 32px;
+font-weight: 600;
+line-height: 120%;
+margin-bottom: 8px;
+}
+.screen.location-detail p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0.07px;
+}
+.screen img.position-fixed {
+  width: 48px;
+  top: 64px;
+  right: 24px;
+}
+.screen.image-credits {
+  background: none;
+}
+.screen.image-credits .screen-wrapper {
+  padding: 64px 16px 0;
+  color: #0F0D0B;
+}
+.screen.image-credits .top-card {
+  margin: 0 8px 24px;
+}
+.screen.image-credits h3 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 150%;
+}
+.screen.image-credits .list > div {
+  padding: 16px;
+  border-radius: 20px;
+  background: #FFF;
+  box-shadow: 0px 1px 17px 0px rgba(0, 0, 0, 0.08);
+  margin-bottom: 10px;
+  gap: 8px;
+}
+.screen.image-credits h4 {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: -0.06px;
+  margin-bottom: 4px;
+}
+.screen.image-credits p {
+  font-size: 8px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: -0.006px;
+}
+.screen.image-credits img {
+  width: 64px;
+  border-radius: 16px;
 }
 
 

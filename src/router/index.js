@@ -3,6 +3,8 @@ import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
 import GetStarted from "../views/get-started.vue";
 import MapView from "../views/map.vue";
+import LocationDetails from "../views/LocationDetails.vue";
+import ImageCredits from "../views/ImageCredits.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +28,16 @@ const router = createRouter({
       path: "/map",
       name: "MapView",
       component: MapView,
+    },
+    {
+      path: "/location-details",
+      name: "LocationDetails",
+      component: LocationDetails,
+    },
+    {
+      path: "/ImageCredits",
+      name: "ImageCredits",
+      component: ImageCredits,
     },
     {
       path: "/about",
