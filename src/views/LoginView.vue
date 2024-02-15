@@ -93,6 +93,9 @@ const register = async () => {
 </script>
 
 <style scoped>
+body {
+    background: url(/src/assets/images/BHP_Home_Image.png);
+}
 .login {
   margin: auto;
   text-align: center;

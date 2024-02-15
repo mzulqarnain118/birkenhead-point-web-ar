@@ -69,6 +69,10 @@ a {
 body {
   font-family: Poppins;
   background-color: #FEF4F0;
+  color: var(--White, #FFF);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 .nav-link {
   color: #191B1E;
@@ -79,13 +83,13 @@ body {
 .bg-color2 {
   background-color: rgb(15 13 11 / 51%);
 }
-.screen {
+/* .screen {
   background: url(./images/BHP_Home_Image.png);
   color: var(--White, #FFF);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-}
+} */
 .welcome .screen-wrapper, .get-started .screen-wrapper, .map .screen-wrapper {
   padding: 0 15px;
   /* height: 100vh; */
@@ -174,6 +178,7 @@ p {
   width: 340px;
   border: 0;
   border-radius: var(--Numbers-Raidus-Raidus-Circle, 30px);
+  margin-top: 24px;
   margin-bottom: 18px;
 }
 .welcome .form-label {
