@@ -4,6 +4,13 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 
 // Replace with your Firebase project config
 const firebaseConfig = {
@@ -21,6 +28,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 // Get Firebase authentication instance
 const auth = getAuth(firebaseApp);
+const db = getFirestore(firebaseApp);
 
 // Function to handle user sign up
 function signUpWithEmailAndPassword(email, password) {
@@ -32,4 +40,16 @@ function signInWithEmailPassword(email, password) {
   return signInWithEmailAndPassword(auth, email, password);
 }
 
-export { auth, signUpWithEmailAndPassword, signInWithEmailPassword };
+// Function to retrieve user information by email
+async function getUserByEmail(email) {
+  const usersCollection = collection(db, "users");
+  const q = query(usersCollection, where("email", "==", email));
+  const querySnapshot = await getDocs(q);
+  let user = null;
+  querySnapshot.forEach((doc) => {
+    user = doc.data();
+  });
+  return user;
+}
+
+export { auth, signUpWithEmailAndPassword, signInWithEmailPassword, getUserByEmail };

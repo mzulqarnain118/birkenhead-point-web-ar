@@ -37,15 +37,18 @@ const router = createRouter({
     {
       path: "/:catchAll(.*)", // Wildcard route to catch all unmatched routes
       component: NotFound, // Display the 404 component
-    },{
+    },
+    {
       path: "/location-details",
       name: "LocationDetails",
       component: LocationDetails,
+      meta: { requiresAuth: true }, // Mark the route as requiring authentication
     },
     {
       path: "/ImageCredits",
       name: "ImageCredits",
       component: ImageCredits,
+      meta: { requiresAuth: true }, // Mark the route as requiring authentication
     },
     {
       path: "/about",

@@ -54,7 +54,7 @@
 <script setup>
 import {
   signUpWithEmailAndPassword,
-  signInWithEmailPassword,
+  signInWithEmailPassword,getUserByEmail
 } from "./firebase";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
@@ -71,6 +71,7 @@ const register = async () => {
     : signUpWithEmailAndPassword
 
   try {
+    // const userByEmail = await getUserByEmail(email.value);
     const response = await auth(email.value, password.value);
 
     if (response?.user?.accessToken) {
