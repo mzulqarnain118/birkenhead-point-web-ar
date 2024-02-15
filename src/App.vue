@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink,useRouter, RouterView } from "vue-router";
-import Map from "./views/map.vue";
+import Login from "./views/LoginView.vue";
 import GetStarted from "./views/get-started.vue";
 import LoginView from "./views/LoginView.vue";
 import { watch} from 'vue';

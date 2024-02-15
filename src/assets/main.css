@@ -70,9 +70,12 @@ body {
   font-family: Poppins;
   background-color: #FEF4F0;
   color: var(--White, #FFF);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center top !important;
+}
+body.login, body.get-started, body.location-details {
+    background: url(/src/assets/images/BHP_Home_Image.png);
 }
 .nav-link {
   color: #191B1E;
@@ -90,15 +93,16 @@ body {
   background-size: cover;
   background-position: center;
 } */
-.welcome .screen-wrapper, .get-started .screen-wrapper, .map .screen-wrapper {
-  padding: 0 15px;
+.login .screen-wrapper, .get-started .screen-wrapper, .map .screen-wrapper {
+  padding: 0 24px;
   /* height: 100vh; */
   margin: 0 auto;
   /* overflow-y: scroll; */
 }
-/* .map .screen-wrapper {
-  padding: 0 14px;
-} */
+.map .screen-wrapper {
+  padding: 0 15px;
+  color: #191B1E;
+}
 .map #locations {
   padding: 0 9px;
 }
@@ -121,24 +125,28 @@ p {
   line-height: 150%;
   letter-spacing: 0.16px;
 }
-.welcome h1 {
+.login .logo p {
+  max-width: 190px;
+  margin-top: -40px !important;
+}
+.login h1 {
   margin: 16px 0;
 }
-.welcome p {
+.login p {
   margin-bottom: 26px;
 }
-.welcome .logo {
-  padding-top: 132px;
+.login .logo {
+  padding-top: 125px;
   padding-bottom: 68px;
 }
-.welcome .form-floating{
+.login .form-floating{
   border-radius: 16px;
     background: rgba(43, 42, 41, 0.51);
     backdrop-filter: blur(5px);
 /*    padding: 11px 16px;*/
   margin-bottom: 18px;
 }
-.welcome .form-floating>label{
+.login .form-floating>label{
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -147,23 +155,23 @@ p {
   opacity: 0.8;
   border: none;
 }
-.welcome .form-floating>.form-control:focus~label{
+.login .form-floating>.form-control:focus~label{
   color: white;
 }
-.welcome .form-floating>.form-control:not(:placeholder-shown)~label{
+.login .form-floating>.form-control:not(:placeholder-shown)~label{
   color: white;
 }
-.welcome .form-floating>.form-control:not(:placeholder-shown)~label::after, .welcome .form-floating>.form-control:focus~label::after{
+.login .form-floating>.form-control:not(:placeholder-shown)~label::after, .login .form-floating>.form-control:focus~label::after{
   background-color: transparent !important;
 /*  opacity: 0.8;*/
 }
-.welcome #email-address-wrapper {
+.login #email-address-wrapper {
   border-radius: 16px;
   background: rgba(43, 42, 41, 0.51);
   backdrop-filter: blur(5px);
   padding: 11px 16px;
 }
-.welcome #email-address {
+.login #email-address {
   background-color: transparent;
   border: none;
   color: var(--White);
@@ -178,10 +186,16 @@ p {
   width: 340px;
   border: 0;
   border-radius: var(--Numbers-Raidus-Raidus-Circle, 30px);
-  margin-top: 24px;
+  /* margin-top: 24px; */
   margin-bottom: 18px;
+  font-size: 16px;
+font-weight: 600;
+line-height: 24px;
 }
-.welcome .form-label {
+.login .btn-primary {
+  margin-top: 24px;
+}
+.login .form-label {
   font-size: 10px;
   font-style: normal;
   font-weight: 500;
@@ -189,10 +203,10 @@ p {
   letter-spacing: 0.05px;
   opacity: 0.8;
 }
-.welcome .form-control:focus {
+.login .form-control:focus {
   box-shadow: none;
 }
-.welcome .form-check-label {
+.login .form-check-label {
   color: var(--White);
   font-size: 14px;
   font-weight: 400;
@@ -200,17 +214,17 @@ p {
   margin-bottom: 0;
   padding-left: 11px !important;
 }
-.welcome .form-check-label:after {
+.login .form-check-label:after {
   color: var(--White);
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;
 }
-.welcome .form-check-label a {
+.login .form-check-label a {
   color: var(--White);
   text-decoration: underline;
 }
-.welcome .form-check-input {
+.login .form-check-input {
   width: 16px;
     height: 16px;
     border-radius: 50% !important;
@@ -223,19 +237,28 @@ p {
     cursor: pointer;
     margin: 0 !important;
 }
-.welcome .form-check-input:checked[type=checkbox] {
+.login .form-check-input:checked[type=checkbox] {
     --bs-form-check-bg-image: none;
     content: url(./images/checkbox-checked.png);
     border: none;
     background-color: transparent;
 }
-.welcome .form-check-input:focus {
+.login .form-check-input:focus {
     border-color: white;
     outline: 0;
     box-shadow: none;
 }
 .get-started .logo {
+  width: 215px;
   padding-top: 54px;
+}
+.get-started .logo p {
+  padding-left: 6px;
+  border-left: 1px solid #ffffff96;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 600;
+  /* letter-spacing: 0.08px; */
 }
 .get-started h1 {
   margin-top: 12px;
@@ -255,7 +278,7 @@ p {
     margin-top: 24px;
     margin-bottom: 20px;
 }
-.how-it-works:before, .how-it-works:after {
+/* .how-it-works:before, .how-it-works:after {
     content: "";
     width: 4px;
     height: 100%;
@@ -267,7 +290,7 @@ p {
 .how-it-works:after {
   left: unset;
   right: 0;
-}
+} */
 .how-it-works > div {
   margin-bottom: 16px;
 }
@@ -290,19 +313,21 @@ p {
 
 
 .splash {
-    height: 100vh;
+    /* height: 100vh; */
     background-color: #FEF4F0;
 }
-.splash .screen-wrapper {
+/* .splash .screen-wrapper {
   padding: 40px;
-}
+} */
 .splash .logo {
-  position: absolute;
+  position: fixed;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, 50%);
+  transform: translate(-50%, -50%);
   max-width: 222px;
 }
 .splash p {
+  color: #0F0D0B;
   max-width: 190px;
   margin-top: -40px !important;
 }
@@ -370,7 +395,6 @@ p {
 }
 .map #floor-tabs .nav-link.active {
     background-color: #F4AE9D !important;
-    opacity: .6;
 }
 .map #nav-tabs .nav-link{
   border: none;
@@ -496,24 +520,24 @@ font-weight: 500;
   font-weight: 600;
   line-height: 24px;
 }
-.screen.location-detail {
+.location-details {
   right: 0;
   bottom: 0;
   left: 0;
   top: 0;
 }
-.screen.location-detail div.position-fixed {
+.location-details div.position-fixed {
   bottom: 53px;
   left: 0;
   padding: 0 16px;
 }
-.screen.location-detail h2 {
+.location-details h2 {
   font-size: 32px;
 font-weight: 600;
 line-height: 120%;
 margin-bottom: 8px;
 }
-.screen.location-detail p {
+.location-details p {
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;
