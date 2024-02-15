@@ -5,6 +5,8 @@ import GetStarted from "../views/get-started.vue";
 import MapView from "../views/map.vue";
 import NotFound from "../views/NotFound.vue";
 import { getLocal } from "../../utils";
+import LocationDetails from "../views/LocationDetails.vue";
+import ImageCredits from "../views/ImageCredits.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,6 +37,23 @@ const router = createRouter({
     {
       path: "/:catchAll(.*)", // Wildcard route to catch all unmatched routes
       component: NotFound, // Display the 404 component
+    },{
+      path: "/location-details",
+      name: "LocationDetails",
+      component: LocationDetails,
+    },
+    {
+      path: "/ImageCredits",
+      name: "ImageCredits",
+      component: ImageCredits,
+    },
+    {
+      path: "/about",
+      name: "about",
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import("../views/AboutView.vue"),
     },
     // ...other routes
   ],

@@ -2,7 +2,7 @@
 
 <template>
 <div class="map">
-<div class="screen-wrapper bg-color1">
+<div class="screen-wrapper">
 <div class="tab-content" id="nav-tabs-content">
   <div class="tab-pane fade show active" id="locations" role="tabpanel" aria-labelledby="locations-tab">
 
@@ -23,8 +23,8 @@
 <div class="tab-content" id="floor-tabs-content">
   <div class="tab-pane fade show active" id="first-floor" role="tabpanel" aria-labelledby="first-floor-tab">
     <img src="../assets/images/BHP_Map_01.svg">
-    <div class="position-absolute info-card d-flex align-items-center">
-      <img width="80" src="../assets/images/BHP_Info_Icon_On.png">
+    <div class="position-fixed info-card d-flex align-items-center">
+      <img width="80" src="../assets/images/level-1.png">
       <div>
         <p class="strong">Level 1</p>
         <p class="text">On the pillar near style runner</p>
@@ -33,8 +33,8 @@
   </div>
   <div class="tab-pane fade" id="second-floor" role="tabpanel" aria-labelledby="second-floor-tab">
     <img src="../assets/images/BHP_Map_02.svg">
-    <div class="position-absolute info-card d-flex align-items-center">
-      <img width="80" src="../assets/images/BHP_Info_Icon_On.png">
+    <div class="position-fixed info-card d-flex align-items-center">
+      <img width="80" src="../assets/images/level-1.png">
       <div>
         <p class="strong">Level 1</p>
         <p class="text">On the pillar near style runner</p>
@@ -43,8 +43,8 @@
   </div>
   <div class="tab-pane fade" id="third-floor" role="tabpanel" aria-labelledby="third-floor-tab">
     <img src="../assets/images/BHP_Map_03.svg">
-    <div class="position-absolute info-card d-flex align-items-center">
-      <img width="80" src="../assets/images/BHP_Info_Icon_On.png">
+    <div class="position-fixed info-card d-flex align-items-center">
+      <img width="80" src="../assets/images/level-1.png">
       <div>
         <p class="strong">Level 1</p>
         <p class="text">On the pillar near style runner</p>
@@ -53,8 +53,8 @@
   </div>
   <div class="tab-pane fade" id="parking" role="tabpanel" aria-labelledby="parking-tab">
     <img src="../assets/images/BHP_Map_04.svg">
-    <div class="position-absolute info-card d-flex align-items-center">
-      <img width="80" src="../assets/images/BHP_Info_Icon_On.png">
+    <div class="position-fixed info-card d-flex align-items-center">
+      <img width="80" src="../assets/images/level-1.png">
       <div>
         <p class="strong">Level 1</p>
         <p class="text">On the pillar near style runner</p>
@@ -68,22 +68,27 @@
   <div class="tab-pane fade" id="scan-qr-code" role="tabpanel" aria-labelledby="scan-qr-code-tab">scan-qr-code</div>
   <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
   <div class="plr-10">
-    <div class="logo d-flex justify-content-center">
-		<img width="130" src="../assets/images/BHP_Logo-With-Black-Text.png">
-    </div>
+    <div class="logo d-flex flex-column align-items-center">
+        <img width="145" src="../assets/images/BHP_Logo.gif" />
+        <p class="m-0 m-auto text-center">Birkenhead Point Augmented Reality Experience</p>
+      </div>
     <p>A small blurb about the AR experience, highlighting the centre’s hopes to inform and preserve the history of Birkenhead Point</p>
     <p>Birkenhead Point continues to be a vibrant centre for our customers. As Sydney's best-loved premium brand outlet with more than 160 local and international brands, water-front dining and exciting entertainment our customers can expect a day out nothing short of memorable when visiting. Discover what’s currently on at Birkenhead Point here:</p>
     <a href="https://www.birkenheadpoint.com.au/">https://www.birkenheadpoint.com.au/</a>
   </div>
-    <div class="image-credits text-center">
-      <a href="">Image Credits</a>
+    <div class="d-flex justify-content-center">
+      <a class="cta-image-credits">Image Credits
+        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12" fill="none">
+          <path d="M1.50004 1C1.50004 1 6.49999 4.68244 6.5 6.00004C6.50001 7.31763 1.5 11 1.5 11" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
     </div>
 	    <div class="text-center">
 			<button type="submit" class="btn btn-primary logout">Logout</button>
 	    </div>
   </div>
 </div>
-    <ul class="nav nav-tabs d-flex align-items-center justify-content-between" id="nav-tabs" role="tablist">
+    <ul class="nav nav-tabs position-fixed d-flex align-items-center justify-content-between" id="nav-tabs" role="tablist">
   <li class="nav-item" role="presentation">
     <button class="nav-link active" id="locations-tab" data-bs-toggle="tab" data-bs-target="#locations" type="button" role="tab" aria-controls="locations" aria-selected="true">
       <img src="../assets/images/BHP_Map_Icon_Off.png">
