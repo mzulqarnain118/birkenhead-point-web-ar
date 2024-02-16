@@ -1,5 +1,5 @@
 <template>
-  <div class="screen welcome">
+  <div class="screen">
     <div class="screen-wrapper">
     <div class="logo d-flex flex-column align-items-center">
         <img width="220" src="../assets/images/BHP_Logo.gif" />
@@ -17,11 +17,10 @@
             v-model="email"
             class="form-control"
             id="email-address"
-            placeholder="Enter email"
             name="email"
             required
           />
-          <label for="email">Email address</label>
+          <label for="email">Email Address</label>
           <input
             type="password"
             v-model="password"

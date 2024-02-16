@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div class="screen location-detail position-fixed">
+  <div class="screen position-fixed">
     <div class="screen-wrapper">
       <div class="position-fixed">
         <h2>Level 1</h2>

@@ -7,7 +7,7 @@ const next = () => {
 
 
 <template>
-<div class="screen get-started">
+<div class="screen">
 <div class="screen-wrapper">
     <div class="d-flex justify-content-center">
     <div class="logo d-flex align-items-center">
@@ -43,7 +43,7 @@ const next = () => {
     	</div>
     </div>
     <div class="text-center">
-		<button type="submit" class="btn btn-primary" @click="next">Continue</button>
+		<button type="submit" class="btn btn-primary" @click="next">Get Started</button>
     </div>
 </div>
 </div>
