@@ -1,4 +1,6 @@
 <script setup>
+    // <Floor1Map/>
+    // import Floor1Map from '../assets/images//BHP_Map_01.svg';
 import { ref } from 'vue';
 import { useRouter } from "vue-router";
 import { clearLocalStorage } from "../../utils";

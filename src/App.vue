@@ -8,7 +8,7 @@ import { watch} from 'vue';
 const router = useRouter();
 
 watch(() => router.currentRoute.value.path, (newPath) => {
-  document.body.classList.add(newPath.slice(1));
+  document.body.setAttribute("class", newPath.slice(1))
 });
 </script>
 

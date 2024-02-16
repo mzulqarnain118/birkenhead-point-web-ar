@@ -36,6 +36,7 @@
               class="form-check-input"
               type="checkbox"
               id="disabledFieldsetCheck"
+              required
             />
             <label class="form-check-label mt-0" for="disabledFieldsetCheck">
               I agree to the <a href="https://www.mirvac.com/privacy-policy" target="_blank">BHP Privacy Policy</a> and
@@ -76,15 +77,21 @@ const register = async () => {
 
     if (response?.user?.accessToken) {
       setLocal("token", response.user.accessToken); // Save token in localStorage
-      setLocal("userEmail", response.user.email); // Save token in localStorage
-      setLocal("userId", response.user.uid); // Save token in localStorage
       router.push("/get-started"); // Redirect to the next page
     } else {
       console.log("🚀 ~ login ~ response:", response);
       errorMessage.value = "Incorrect email or password"; // Show error for incorrect info
     }
   } catch (error) {
-    console.error("Login error:", error);
+    if (error.code === 'auth/email-already-in-use') {
+       const response = await signInWithEmailPassword(email.value, password.value);
+
+    if (response?.user?.accessToken) {
+      setLocal("token", response.user.accessToken); // Save token in localStorage
+      router.push("/get-started"); // Redirect to the next page
+    }
+    }
+    console.log("Login error:", error,'===========',error.code,"==============",error.message);
     errorMessage.value = error.message;
   }
 };
