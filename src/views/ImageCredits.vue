@@ -1,11 +1,14 @@
-<script setup></script>
+<script setup>
+import { useRouter } from "vue-router";
+const router = useRouter();
+</script>
 
 <template>
   <div class="screen image-credits">
     <div class="screen-wrapper">
       <div class="top-card d-flex align-items-center justify-content-between">
         <h3>Image Credits</h3>
-        <img width="48px" src="../assets/images/cross.png"/>
+        <img width="48px" src="../assets/images/cross.png" @click="router.go(-1)"/>
       </div>
       <div class="list">
         <div class="card-wrapper d-flex align-items-center justify-content-between">
