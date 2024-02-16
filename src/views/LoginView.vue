@@ -79,7 +79,6 @@ const register = async () => {
       setLocal("token", response.user.accessToken); // Save token in localStorage
       router.push("/get-started"); // Redirect to the next page
     } else {
-      console.log("🚀 ~ login ~ response:", response);
       errorMessage.value = "Incorrect email or password"; // Show error for incorrect info
     }
   } catch (error) {
@@ -88,7 +87,7 @@ const register = async () => {
 
     if (response?.user?.accessToken) {
       setLocal("token", response.user.accessToken); // Save token in localStorage
-      router.push("/get-started"); // Redirect to the next page
+      router.push("/get-started");
     }
     }
     console.log("Login error:", error,'===========',error.code,"==============",error.message);
