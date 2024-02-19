@@ -62,9 +62,22 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import("../views/AboutView.vue"),
+      // component: () => import("../views/AboutView.vue"),
+      component: MapView,
+      meta: { requiresAuth: true },
     },
-    // ...other routes
+    {
+      path: "/locations",
+      name: "locations",
+      component: MapView,
+      meta: { requiresAuth: true },
+    },
+    {
+      path: "/scan-qr-code",
+      name: "scan-qr-code",
+      component: MapView,
+      meta: { requiresAuth: true },
+    },
   ],
 });
 
