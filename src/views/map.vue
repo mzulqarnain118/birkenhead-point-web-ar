@@ -15,8 +15,8 @@
         :aria-controls="tab.id"
         :aria-selected="tab.route===currentRoute"
       >
-        <img :src="`src/assets/images/${tab.iconOff}`" />
-        <img :src="`src/assets/images/${tab.iconOn}`" />
+        <img :src="`${tab.iconOff}`" />
+        <img :src="`${tab.iconOn}`" />
       </button>
     </li>
   </ul>
@@ -29,13 +29,18 @@ import { useRouter } from "vue-router";
 import LocationsView from "./LocationsView.vue";
 import ARCamera from "./ARCamera.vue";
 import AboutView from "./AboutView.vue";
-
+import locationIconOn from "../assets/images/BHP_Map_Icon_On.png";
+import locationIconOff from "../assets/images/BHP_Map_Icon_Off.png";
+import scanIconOn from "../assets/images/BHP_Phone_Icon_On.png";
+import scanIconOff from "../assets/images/BHP_Phone_Icon_Off.png";
+import infoIconOn from "../assets/images/BHP_Info_Icon_On.png";
+import infoIconOff from "../assets/images/BHP_Info_Icon_Off.png";
 const tabsData = [
-  { id: 'locations-tab', target: '#locations', route: 'locations', iconOff: 'BHP_Map_Icon_Off.png', iconOn: 'BHP_Map_Icon_On.png', active: true },
-  { id: 'scan-qr-code-tab', target: '#scan-qr-code', route: 'scan-qr-code', iconOff: 'BHP_Phone_Icon_Off.png', iconOn: 'BHP_Phone_Icon_On.png', active: false },
-  { id: 'about-tab', target: '#about', route: 'about', iconOff: 'BHP_Info_Icon_Off.png', iconOn: 'BHP_Info_Icon_On.png', active: false }
+  { id: 'locations-tab', target: '#locations', route: 'map', iconOff: locationIconOff, iconOn: locationIconOn, active: true },
+  { id: 'scan-qr-code-tab', target: '#scan-qr-code', route: 'scan-qr-code', iconOff: scanIconOff, iconOn: scanIconOn, active: false },
+  { id: 'about-tab', target: '#about', route: 'about', iconOff: infoIconOff, iconOn: infoIconOn, active: false }
 ];
-const components = { locations: LocationsView, 'scan-qr-code': ARCamera, about: AboutView }
+const components = { map: LocationsView, 'scan-qr-code': ARCamera, about: AboutView }
 
 const router = useRouter();
 const currentRoute = ref("");

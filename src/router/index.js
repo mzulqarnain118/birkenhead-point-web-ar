@@ -67,12 +67,6 @@ const router = createRouter({
       meta: { requiresAuth: true },
     },
     {
-      path: "/locations",
-      name: "locations",
-      component: MapView,
-      meta: { requiresAuth: true },
-    },
-    {
       path: "/scan-qr-code",
       name: "scan-qr-code",
       component: MapView,

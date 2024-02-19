@@ -30,9 +30,9 @@
         role="tabpanel"
         :aria-labelledby="`${tab.id}-tab`"
       >
-        <img :src="`src/assets/images/${tab.image}`" />
+        <img :src="`/BHP_Map_0${index+1}.svg`" />
         <div class="position-fixed info-card d-flex align-items-center">
-          <img width="80" src="src/assets/images/level-1.png" />
+          <img width="80" src="../assets/images/level-1.png" />
           <div>
             <p class="strong">{{ tab.label }}</p>
             <p class="text">{{ tab.info }}</p>
@@ -45,12 +45,11 @@
 
 <script setup>
 import { ref } from "vue";
-
 const tabsData = [
-  { id: 'first-floor', label: '1st Floor', image: 'BHP_Map_01.svg', info: 'On the pillar near style runner' },
-  { id: 'second-floor', label: '2nd Floor', image: 'BHP_Map_02.svg', info: 'On the pillar near style runner' },
-  { id: 'third-floor', label: '3rd Floor', image: 'BHP_Map_03.svg', info: 'On the pillar near style runner' },
-  { id: 'parking', label: 'Parking', image: 'BHP_Map_04.svg', info: 'On the pillar near style runner' }
+  { id: 'first-floor', label: '1st Floor',  info: 'On the pillar near style runner' },
+  { id: 'second-floor', label: '2nd Floor',  info: 'On the pillar near style runner' },
+  { id: 'third-floor', label: '3rd Floor',  info: 'On the pillar near style runner' },
+  { id: 'parking', label: 'Parking', info: 'On the pillar near style runner' }
 ];
 
 const activeTabIndex = ref(0);
