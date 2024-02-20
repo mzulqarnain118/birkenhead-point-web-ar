@@ -2,16 +2,13 @@
 import { RouterLink,useRouter, RouterView } from "vue-router";
 import Login from "./views/LoginView.vue";
 import GetStarted from "./views/get-started.vue";
-import Splash from "./views/Splash.vue";
-import Map from "./views/map.vue";
-import LocationDetails from "./views/LocationDetails.vue";
-import ImageCredits from "./views/ImageCredits.vue";
-import { watch } from 'vue';
+import LoginView from "./views/LoginView.vue";
+import { watch} from 'vue';
 
 const router = useRouter();
 
 watch(() => router.currentRoute.value.path, (newPath) => {
-  document.body.classList.add(newPath.slice(1));
+  document.body.setAttribute("class", newPath.slice(1))
 });
 </script>
 
@@ -24,7 +21,6 @@ watch(() => router.currentRoute.value.path, (newPath) => {
       </nav>
     </div> -->
   <RouterView /> 
-  <!-- <Splash />  -->
 <!-- <Map/> -->
 </template>
 

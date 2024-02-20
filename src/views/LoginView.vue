@@ -35,10 +35,11 @@
               class="form-check-input"
               type="checkbox"
               id="disabledFieldsetCheck"
+              required
             />
             <label class="form-check-label mt-0" for="disabledFieldsetCheck">
-              I agree to the <a href="#">BHP Privacy Policy</a> and
-              <a href="#">Terms and Conditions</a>
+              I agree to the <a href="https://www.mirvac.com/privacy-policy" target="_blank">BHP Privacy Policy</a> and
+              <a href="https://www.mirvac.com/conditions-of-use" target="_blank">Terms and Conditions</a>
             </label>
           </div>
         </div>
@@ -54,7 +55,7 @@
 <script setup>
 import {
   signUpWithEmailAndPassword,
-  signInWithEmailPassword,getUserByEmail
+  signInWithEmailPassword,
 } from "./firebase";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
@@ -66,27 +67,29 @@ const errorMessage = ref("");
 const router = useRouter();
 
 const register = async () => {
-  const auth=await getLocal("token")
-      ? signInWithEmailPassword
-    : signUpWithEmailAndPassword
+  const auth = (await getLocal("token"))
+    ? signInWithEmailPassword
+    : signUpWithEmailAndPassword;
 
   try {
-    // const userByEmail = await getUserByEmail(email.value);
     const response = await auth(email.value, password.value);
 
     if (response?.user?.accessToken) {
-      console.log("🚀 ~ login ~ response:-------register------", response);
-
       setLocal("token", response.user.accessToken); // Save token in localStorage
-      setLocal("userEmail", response.user.email); // Save token in localStorage
-      setLocal("userId", response.user.uid); // Save token in localStorage
       router.push("/get-started"); // Redirect to the next page
     } else {
-      console.log("🚀 ~ login ~ response:", response);
       errorMessage.value = "Incorrect email or password"; // Show error for incorrect info
     }
   } catch (error) {
-    console.error("Login error:", error);
+    if (error.code === 'auth/email-already-in-use') {
+       const response = await signInWithEmailPassword(email.value, password.value);
+
+    if (response?.user?.accessToken) {
+      setLocal("token", response.user.accessToken); // Save token in localStorage
+      router.push("/get-started");
+    }
+    }
+    console.log("Login error:", error,'===========',error.code,"==============",error.message);
     errorMessage.value = error.message;
   }
 };

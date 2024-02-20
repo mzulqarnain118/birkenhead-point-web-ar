@@ -62,9 +62,16 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import("../views/AboutView.vue"),
+      // component: () => import("../views/AboutView.vue"),
+      component: MapView,
+      meta: { requiresAuth: true },
     },
-    // ...other routes
+    {
+      path: "/scan-qr-code",
+      name: "scan-qr-code",
+      component: MapView,
+      meta: { requiresAuth: true },
+    },
   ],
 });
 
@@ -75,10 +82,14 @@ router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth && !isAuthenticated) {
     // If the route requires authentication and the user is not authenticated, redirect to the login page
     next({ name: "LoginView" });
+  } else if (to.name === 'LoginView' && isAuthenticated) {
+    // If the user is authenticated and tries to access the login page, redirect them back to the home page
+    router.go(-1);
   } else {
     // If the route does not require authentication or the user is authenticated, proceed to the route
     next();
   }
 });
+
 
 export default router;
