@@ -294,7 +294,7 @@ p {
 }
 .how-it-works {
     background: var(--White);
-    color: var(--White);
+    color: var(--TextColorBlack);
     border-radius: 20px;
     position: relative;
     overflow: hidden;
