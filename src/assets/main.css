@@ -5,6 +5,11 @@
   --White: #FFF;
   --BodyBackground: #FEF4F0;
   --TextColorBlack: #0F0D0B;
+  --TextColorLightBlack: #58595B;
+  --Red: #E5441E;
+}
+.text-color-black {
+  color: var(--TextColorBlack);
 }
 #app {
 	/* max-width: 1280px;
@@ -16,7 +21,7 @@
 
 a {
 	text-decoration: none;
-  color: var(--Primary04, #E5441E);
+  color: var(--Red);
 	transition: 0.4s;
 }
 
@@ -83,7 +88,7 @@ body.login, body.get-started, body.location-details {
     background: url(/src/assets/images/BHP_Home_Image.png);
 }
 .nav-link {
-  color: #191B1E;
+  color: var(--TextColorBlack);
 }
 /* .bg-color1 {
   background-color: #FEF4F0;
@@ -105,8 +110,15 @@ body.login, body.get-started, body.location-details {
   /* overflow-y: scroll; */
 }
 .map .screen-wrapper {
-  padding: 0 15px;
-  color: #191B1E;
+  padding: 0 14px;
+}
+.map p {
+  margin-bottom: 8px;
+  /* padding: 0 15px; */
+  color: var(--TextColorBlack);
+}
+.map a {
+  margin-bottom: 10px;
 }
 .map #locations {
   padding: 0 9px;
@@ -163,10 +175,10 @@ p {
   border: none;
 }
 .login .form-floating>.form-control:focus~label{
-  color: white;
+  color: var(--White);
 }
 .login .form-floating>.form-control:not(:placeholder-shown)~label{
-  color: white;
+  color: var(--White);
 }
 .login .form-floating>.form-control:not(:placeholder-shown)~label::after, .login .form-floating>.form-control:focus~label::after{
   background-color: transparent !important;
@@ -186,14 +198,14 @@ p {
   padding-right: 0;*/
 }
 .btn-primary, .btn-primary:hover, .btn-primary:active {
-  color: #0F0D0B !important;
-  background-color: var(--Primary, #FFB1A3) !important;
+  color: var(--TextColorBlack) !important;
+  background-color: var(--Primary) !important;
   height: 56px;
   /* padding: 12px 49px; */
   width: 340px;
   max-width: 100%;
   border: 0;
-  border-radius: var(--Numbers-Raidus-Raidus-Circle, 30px);
+  border-radius: 30px;
   /* margin-top: 24px; */
   margin-bottom: 18px;
   font-size: 16px;
@@ -238,7 +250,7 @@ p {
     border-radius: 50% !important;
     vertical-align: middle;
     background-color: transparent;
-    border: 1px solid white;
+    border: 1px solid var(--White);
     appearance: none;
     -webkit-appearance: none;
     outline: none !important;
@@ -251,7 +263,7 @@ p {
     background-color: var(--Primary);
 }
 .login .form-check-input:focus {
-    border-color: white;
+    border-color: var(--White);
     outline: 0;
     box-shadow: none;
 }
@@ -276,8 +288,8 @@ p {
   margin-bottom: 8px;
 }
 .how-it-works {
-    background: #fff;
-    color: black;
+    background: var(--White);
+    color: var(--White);
     border-radius: 20px;
     position: relative;
     overflow: hidden;
@@ -300,9 +312,12 @@ p {
 } */
 .how-it-works > div {
   margin-bottom: 16px;
+  gap: 10px;
 }
 .how-it-works p {
   margin-bottom: 0;
+  color: var(--TextColorLightBlack);
+  opacity: 0.8;
 }
 .how-it-works h6 {
   font-size: 16px;
@@ -311,6 +326,7 @@ p {
   line-height: 150%; /* 24px */
   padding-left: 6px;
   margin-bottom: 16px;
+  color: var(--TextColorBlack);
 }
 .how-it-works img {
   width: 48px;
@@ -319,10 +335,10 @@ p {
 
 
 
-.splash {
-    /* height: 100vh; */
+/* .splash {
+    height: 100vh;
     background-color: #FEF4F0;
-}
+} */
 /* .splash .screen-wrapper {
   padding: 40px;
 } */
@@ -334,7 +350,7 @@ p {
   max-width: 222px;
 }
 .splash p {
-  color: #0F0D0B;
+  color: var(--TextColorBlack);
   max-width: 190px;
   margin-top: -40px !important;
 }
@@ -381,7 +397,7 @@ p {
     width: 325px;
     max-width: calc(100% - 20px);
     height: 68px;
-    background-color: #F4AE9D;
+    background-color: var(--Primary);
     border-radius: 35px;
     padding: 0 25px;
     /* opacity: 0.8; */
@@ -395,7 +411,7 @@ p {
   padding-top: 10px;
 }
 .map #floor-tabs .nav-link {
-  background-color: white;
+  background-color: var(--White);
   /* min-width: 84px; */
   line-height: 34px;
   border-radius: 34px;
@@ -405,7 +421,7 @@ p {
   border: none;
 }
 .map #floor-tabs .nav-link.active {
-    background-color: #F4AE9D !important;
+    background-color: var(--Primary) !important;
 }
 .map #nav-tabs .nav-link{
   border: none;
@@ -451,7 +467,8 @@ p {
 .info-card {
   width: 335px;
   max-width: calc(100% - 30px);
-  background-color: white;
+  background-color: var(--White);
+  color: var(--TextColorBlack);
   transform: translate(-50%, 0);
   left: 50%;
   border-radius: 8px;
@@ -475,26 +492,27 @@ font-weight: 500;
     right: 0;
     bottom: 0;
 }
-#info .logo p {
+.map .logo p {
   max-width: 150px;
   margin-top: -28px !important;
   font-size: 10px;
   font-weight: 600;
 }
-#info .plr-10 {
+.map .plr-10 {
   padding: 0 10px;
 }
-#info .logo {
-  margin-top: 40px;
-  margin-bottom: 24px;
-}
-#info p {
-  margin-bottom: 8px;
+.map .logo {
+  padding-top: 40px;
+  padding-bottom: 24px;
 }
 .tab-content>.tab-pane > img {
-  padding: 32% 0;
+  padding: 10% 0;
 }
 .cta-image-credits {
+  color: var(--TextColorBlack);
+  text-decoration: underline;
+}
+/* .cta-image-credits {
   width: 358px;
   height: 62px;
   padding: 19px;
@@ -519,7 +537,7 @@ font-weight: 500;
   font-weight: 500;
   letter-spacing: 0.16px;
   color: black;
-}
+} */
 .cta-image-credits svg {
   position: absolute;
   right: 19px;
@@ -529,8 +547,11 @@ font-weight: 500;
 .logout {
   opacity: 0.8;
   width: 357px;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 24px;
+  margin-top: 24px;
+  background-color: transparent !important;
+  border: 1px solid var(--Primary);
 }
 
 @media (max-width: 335px) {
@@ -571,7 +592,7 @@ margin-bottom: 8px;
 }
 .image-credits .screen-wrapper {
   padding: 64px 16px 0;
-  color: #0F0D0B;
+  color: var(--TextColorBlack);
 }
 .image-credits .top-card {
   margin: 0 8px 24px;
@@ -584,7 +605,7 @@ margin-bottom: 8px;
 .image-credits .list > div {
   padding: 16px;
   border-radius: 20px;
-  background: #FFF;
+  background: var(--White);
   box-shadow: 0px 1px 17px 0px rgba(0, 0, 0, 0.08);
   margin-bottom: 10px;
   gap: 8px;
