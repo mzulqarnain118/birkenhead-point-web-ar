@@ -1,5 +1,5 @@
 {
   "projects": {
-    "default": "birkenhead-point-ar-web"
+    "default": "birkenhead-point-ar" //your-firebase-project-id
   }
 }

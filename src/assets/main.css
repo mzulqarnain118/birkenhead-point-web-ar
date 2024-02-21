@@ -2,9 +2,7 @@
 @import "./base.css";
 :root {
   --Primary: #FFB1A3;
-  --White: #FFF;
-  --BodyBackground: #FEF4F0;
-  --TextColorBlack: #0F0D0B;
+  --white: #ffffff;
 }
 #app {
 	/* max-width: 1280px;
@@ -73,8 +71,8 @@ a {
 
 body {
   font-family: Poppins;
-  background-color: var(--BodyBackground);
-  color: var(--White);
+  background-color: #FEF4F0 !important;
+  color: var(--White, #FFF);
   background-repeat: no-repeat !important;
   background-size: cover !important;
   background-position: center top !important;
@@ -85,12 +83,12 @@ body.login, body.get-started, body.location-details {
 .nav-link {
   color: #191B1E;
 }
-/* .bg-color1 {
+.bg-color1 {
   background-color: #FEF4F0;
 }
 .bg-color2 {
   background-color: rgb(15 13 11 / 51%);
-} */
+}
 /* .screen {
   background: url(./images/BHP_Home_Image.png);
   color: var(--White, #FFF);
@@ -566,22 +564,22 @@ margin-bottom: 8px;
   top: 64px;
   right: 24px;
 }
-.image-credits {
+.screen.image-credits {
   background: none;
 }
-.image-credits .screen-wrapper {
+.screen.image-credits .screen-wrapper {
   padding: 64px 16px 0;
   color: #0F0D0B;
 }
-.image-credits .top-card {
+.screen.image-credits .top-card {
   margin: 0 8px 24px;
 }
-.image-credits h3 {
+.screen.image-credits h3 {
   font-size: 16px;
   font-weight: 600;
   line-height: 150%;
 }
-.image-credits .list > div {
+.screen.image-credits .list > div {
   padding: 16px;
   border-radius: 20px;
   background: #FFF;
@@ -589,20 +587,20 @@ margin-bottom: 8px;
   margin-bottom: 10px;
   gap: 8px;
 }
-.image-credits h4 {
+.screen.image-credits h4 {
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;
   letter-spacing: -0.06px;
   margin-bottom: 4px;
 }
-.image-credits p {
+.screen.image-credits p {
   font-size: 8px;
   font-weight: 400;
   line-height: 14px;
   letter-spacing: -0.006px;
 }
-.image-credits img {
+.screen.image-credits img {
   width: 64px;
   border-radius: 16px;
 }
