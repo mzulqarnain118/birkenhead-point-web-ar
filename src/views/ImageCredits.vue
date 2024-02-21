@@ -22,7 +22,7 @@ const imageCredits = [
         <div v-for="(item, itemIndex) in floor" :key="itemIndex" class="card-wrapper d-flex align-items-center justify-content-between">
           <div>
             <h4>{{ item.split('-')[0] }}</h4>
-            <p>{{ item.split('-')[1] }}</p>
+            <a href="javascript:void(0)">{{ item.split('-')[1] }}</a>
           </div>
           <img width="48px" :src="`/Floor/${index+1}/${itemIndex+1}.png`"/>
         </div>
