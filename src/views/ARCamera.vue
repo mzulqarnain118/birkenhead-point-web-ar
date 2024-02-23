@@ -4,9 +4,8 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    top: 50;
+    top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.8);
     z-index: 9999;
     display: flex;
     justify-content: center;
@@ -68,7 +67,7 @@
     <a-entity
         gltf-model='https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf'
         scale="7 7 7"
-        position="100 0 0"
+        position="80 80 0"
         rotation="0 -90 90"
         >
     </a-entity>
@@ -79,7 +78,7 @@
 </template>
 
 <script setup>
-import 'aframe';
-import 'ar.js';
+// import 'aframe';
+// import 'ar.js';
 
 </script>

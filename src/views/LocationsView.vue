@@ -5,9 +5,14 @@
       id="floor-tabs"
       role="tablist"
     >
-      <li v-for="(tab, index) in tabsData" :key="index" class="nav-item" role="presentation">
+      <li
+        v-for="(tab, index) in tabsData"
+        :key="index"
+        class="nav-item"
+        role="presentation"
+      >
         <button
-          :class="{'nav-link': true, 'active': index === activeTabIndex}"
+          :class="{ 'nav-link': true, active: index === activeTabIndex }"
           :id="`${tab.id}-tab`"
           data-bs-toggle="tab"
           :data-bs-target="`#${tab.id}`"
@@ -25,17 +30,31 @@
       <div
         v-for="(tab, index) in tabsData"
         :key="index"
-        :class="['tab-pane', { 'fade': index !== activeTabIndex, 'show active': index === activeTabIndex }]"
+        :class="[
+          'tab-pane',
+          {
+            fade: index !== activeTabIndex,
+            'show active': index === activeTabIndex,
+          },
+        ]"
         :id="tab.id"
         role="tabpanel"
         :aria-labelledby="`${tab.id}-tab`"
       >
-        <img :src="`/BHP_Map_0${index+1}.svg`" />
-        <div class="position-fixed info-card d-flex align-items-center">
-          <img width="80" src="../assets/images/level-1.png" />
+        <component
+          :is="components[activeTabIndex]"
+          :getSelecetedMarkerDetails="getSelecetedMarkerDetails"
+        />
+        <div v-if="selectedMarkerIndex!==null" class="position-fixed info-card d-flex align-items-center">
+          <img
+            width="80"
+            :src="`/Floor/${activeTabIndex + 1}/${selectedMarkerIndex + 1}.png`"
+          />
           <div>
-            <p class="strong">{{ tab.label }}</p>
-            <p class="text">{{ tab.info }}</p>
+            <p class="strong">{{ selectedMarker.split("-")[0] }}</p>
+            <p class="text">
+              {{ selectedMarker.split("-")[1] }}
+            </p>
           </div>
         </div>
       </div>
@@ -44,18 +63,62 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
+import Floor1SvgManipulation from "./Floor1SvgManipulation.vue";
+import Floor2SvgManipulation from "./Floor2SvgManipulation.vue";
+import Floor3SvgManipulation from "./Floor3SvgManipulation.vue";
+import Floor4SvgManipulation from "./Floor4SvgManipulation.vue";
+const components = {
+  0: Floor1SvgManipulation,
+  1: Floor2SvgManipulation,
+  2: Floor3SvgManipulation,
+  3: Floor4SvgManipulation,
+};
 const tabsData = [
-  { id: 'first-floor', label: '1st Floor',  info: 'On the pillar near style runner' },
-  { id: 'second-floor', label: '2nd Floor',  info: 'On the pillar near style runner' },
-  { id: 'third-floor', label: '3rd Floor',  info: 'On the pillar near style runner' },
-  { id: 'parking', label: 'Parking', info: 'On the pillar near style runner' }
+  { id: "first-floor", label: "1st Floor" },
+  { id: "second-floor", label: "2nd Floor" },
+  { id: "third-floor", label: "3rd Floor" },
+  { id: "parking", label: "Parking" },
 ];
 
 const activeTabIndex = ref(0);
+const imageCredits = [
+  [
+    "Ground floor - on the pillar near Col",
+    "Ground floor - on the wall near Panda",
+  ],
+  [
+    "Level 1 - Next to the arch in the foo court",
+    "Level 1 - On the pillar near COACH",
+    "Level 1 - On the pillar near Lorna Jane",
+    "Level 1 - On the pillar near NIKE",
+    "Level 1 - On the wall next to Spotlight",
+  ],
+  [
+    "Level 2 - On the pillar near STRAND",
+    "Level 2 - On the pillar near Style Runner",
+  ],
+  ["Level 3 - On the pillar near Hype"],
+];
+const selectedMarker = ref('');
+const selectedMarkerIndex = ref(null);
 
 const changeTab = (index) => {
   activeTabIndex.value = index;
+  selectedMarkerIndex.value = null;
+};
+
+const getSelecetedMarkerDetails = (point) => {
+  const matchingCredits = imageCredits.find((arr) =>
+    arr.some((item, index) => activeTabIndex.value === index)
+  );
+  if (matchingCredits) {
+    selectedMarker.value = matchingCredits[point];
+    selectedMarkerIndex.value = point;
+  } else {
+    selectedMarkerIndex.value = point;
+    selectedMarker.value = "Ground floor - on the pillar near Col";
+  }
 };
 </script>
 

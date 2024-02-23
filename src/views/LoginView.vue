@@ -44,7 +44,8 @@
           </div>
         </div>
         <div class="text-center">
-          <button type="submit" class="btn btn-primary">Continue</button>
+          <button type="submit" class="btn btn-primary">  <LoaderVue v-if="loading" /> 
+    <span v-else>Continue</span></button>
         </div>
       </form>
       <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
@@ -56,14 +57,16 @@
 import {
   signUpWithEmailAndPassword,
   signInWithEmailPassword,
-} from "./firebase";
+} from "./firebase.js";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 import { getLocal, setLocal } from "../../utils";
+import LoaderVue from "../components/Loader.vue";
 
 const email = ref("");
 const password = ref("12345678"); // Set default value for the password
 const errorMessage = ref("");
+const loading = ref("");
 const router = useRouter();
 
 const register = async () => {
@@ -73,8 +76,9 @@ const register = async () => {
 
   try {
     const response = await auth(email.value, password.value);
-
+      loading.value = true;
     if (response?.user?.accessToken) {
+      loading.value = false;
       setLocal("token", response.user.accessToken); // Save token in localStorage
       router.push("/get-started"); // Redirect to the next page
     } else {
@@ -82,9 +86,11 @@ const register = async () => {
     }
   } catch (error) {
     if (error.code === 'auth/email-already-in-use') {
+                loading.value = true;
        const response = await signInWithEmailPassword(email.value, password.value);
 
-    if (response?.user?.accessToken) {
+      if (response?.user?.accessToken) {
+                loading.value = false;
       setLocal("token", response.user.accessToken); // Save token in localStorage
       router.push("/get-started");
     }
