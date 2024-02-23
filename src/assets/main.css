@@ -86,6 +86,12 @@ body {
 }
 body.login, body.get-started, body.location-details {
     background: url(/src/assets/images/BHP_Home_Image.png);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: scroll;
 }
 .nav-link {
   color: var(--TextColorBlack);
@@ -142,9 +148,10 @@ p {
   line-height: 150%;
   letter-spacing: 0.16px;
 }
-.login .logo p {
-  max-width: 190px;
-  margin-top: -40px !important;
+.logo p {
+  font-size: 14px;
+  letter-spacing: 0.08px;
+  font-weight: 600;
 }
 .login h1 {
   margin: 16px 0;
@@ -276,8 +283,6 @@ p {
   border-left: 1px solid #ffffff96;
   font-size: 12px;
   line-height: 14px;
-  font-weight: 600;
-  /* letter-spacing: 0.08px; */
 }
 .get-started h1 {
   margin-top: 12px;
@@ -289,7 +294,7 @@ p {
 }
 .how-it-works {
     background: var(--White);
-    color: var(--White);
+    color: var(--TextColorBlack);
     border-radius: 20px;
     position: relative;
     overflow: hidden;
@@ -349,8 +354,10 @@ p {
   transform: translate(-50%, -50%);
   max-width: 222px;
 }
-.splash p {
+.splash .logo p {
   color: var(--TextColorBlack);
+}
+.splash .logo p, .login .logo p {
   max-width: 190px;
   margin-top: -40px !important;
 }
