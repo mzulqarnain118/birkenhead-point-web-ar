@@ -180,10 +180,6 @@ p {
 }
 .login .form-floating>.form-control:focus~label{
   color: var(--White);
-  transform: scale(.85) translateY(-0.5rem) translateX(0.15rem);
-}
-.form-floating>.form-control:not(:placeholder-shown)~label {
-  transform: unset;
 }
 .login .form-floating>.form-control:not(:placeholder-shown)~label{
   color: var(--White);
