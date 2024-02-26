@@ -86,12 +86,9 @@ body {
 }
 body.login, body.get-started, body.location-details {
     background: url(/src/assets/images/BHP_Home_Image.png);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow-y: scroll;
+}
+body.get-started {
+    height: 100vh;
 }
 .nav-link {
   color: var(--TextColorBlack);
@@ -183,6 +180,10 @@ p {
 }
 .login .form-floating>.form-control:focus~label{
   color: var(--White);
+  transform: scale(.85) translateY(-0.5rem) translateX(0.15rem);
+}
+.form-floating>.form-control:not(:placeholder-shown)~label {
+  transform: unset;
 }
 .login .form-floating>.form-control:not(:placeholder-shown)~label{
   color: var(--White);
@@ -557,6 +558,7 @@ font-weight: 500;
   font-weight: 400;
   line-height: 24px;
   margin-top: 24px;
+  margin-bottom: 100px;
   background-color: transparent !important;
   border: 1px solid var(--Primary);
 }
