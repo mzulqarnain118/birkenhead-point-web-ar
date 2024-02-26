@@ -95,7 +95,6 @@ const register = async () => {
       router.push("/get-started");
     }
     }
-    console.log("Login error:", error,'===========',error.code,"==============",error.message);
     errorMessage.value = error.message;
   }
 };

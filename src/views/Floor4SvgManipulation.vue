@@ -783,7 +783,7 @@
         </g>
       </g>
     </g>
-    <g>
+    <g @click="getSelecetedMarkerDetails(0)">
       <path
         class="st9"
         d="M230.7,433.3c0,0.3,0.2,0.1,0.3,0.1c0.6-0.5,1.2-1,1.8-1.5c1-0.8,2.1-1.6,3.1-2.4c0.1-0.1,0.1-0.1,0.2-0.1
@@ -847,17 +847,10 @@
   </svg>
 </template>
 
-<script>
-export default {
-  props: {
-    getSelecetedMarkerDetails: Function, // Define the prop to accept the getImageCredits function
-  },
-  mounted() {
-    // Call the getImageCredits function when the component is mounted or whenever needed
-    this.getSelecetedMarkerDetails(0); // Call getImageCredits with the appropriate point index
-    console.log(this.getSelecetedMarkerDetails(1), this.hello);
-  },
-};
+<script setup>
+const { getSelecetedMarkerDetails } = defineProps([
+  "getSelecetedMarkerDetails",
+]);
 </script>
 
 <style scoped>

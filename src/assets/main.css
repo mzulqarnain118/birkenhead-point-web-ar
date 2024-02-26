@@ -512,7 +512,7 @@ font-weight: 500;
   padding-top: 40px;
   padding-bottom: 24px;
 }
-.tab-content>.tab-pane > img {
+.tab-content>.tab-pane > svg {
   padding: 10% 0;
 }
 .cta-image-credits {

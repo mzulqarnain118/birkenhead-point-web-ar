@@ -45,7 +45,10 @@
           :is="components[activeTabIndex]"
           :getSelecetedMarkerDetails="getSelecetedMarkerDetails"
         />
-        <div v-if="selectedMarkerIndex!==null" class="position-fixed info-card d-flex align-items-center">
+        <div
+          v-if="selectedMarkerIndex !== null"
+          class="position-fixed info-card d-flex align-items-center"
+        >
           <img
             width="80"
             :src="`/Floor/${activeTabIndex + 1}/${selectedMarkerIndex + 1}.png`"
@@ -89,7 +92,6 @@ const imageCredits = [
   ],
   [
     "Level 1 - Next to the arch in the foo court",
-    "Level 1 - On the pillar near COACH",
     "Level 1 - On the pillar near Lorna Jane",
     "Level 1 - On the pillar near NIKE",
     "Level 1 - On the wall next to Spotlight",
@@ -97,10 +99,11 @@ const imageCredits = [
   [
     "Level 2 - On the pillar near STRAND",
     "Level 2 - On the pillar near Style Runner",
+    "Level 1 - On the pillar near COACH",
   ],
   ["Level 3 - On the pillar near Hype"],
 ];
-const selectedMarker = ref('');
+const selectedMarker = ref("");
 const selectedMarkerIndex = ref(null);
 
 const changeTab = (index) => {
@@ -109,8 +112,8 @@ const changeTab = (index) => {
 };
 
 const getSelecetedMarkerDetails = (point) => {
-  const matchingCredits = imageCredits.find((arr) =>
-    arr.some((item, index) => activeTabIndex.value === index)
+  const matchingCredits = imageCredits.find(
+    (item, index) => activeTabIndex.value === index
   );
   if (matchingCredits) {
     selectedMarker.value = matchingCredits[point];
