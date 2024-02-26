@@ -17,7 +17,7 @@ server.cert
 server.key
 /cypress/videos/
 /cypress/screenshots/
-
+.firebase/*
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
