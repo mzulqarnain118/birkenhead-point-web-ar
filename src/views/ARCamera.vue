@@ -58,17 +58,17 @@
         embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
         <!-- use rawgithack to retrieve the correct url for nft marker (see 'trex' below) -->
         <a-nft
-            type='nft' url='https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex'
+            type='nft' 
+            url='/public/trex/trex'
       smooth="true"
       smoothCount="10"
       smoothTolerance=".01"
       smoothThreshold="5"
     >
     <a-entity
-        gltf-model='https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf'
-        scale="7 7 7"
-        position="80 80 0"
-        rotation="0 -90 90"
+        gltf-model='/public/scene.gltf'
+       scale="5 5 5"
+        position="50 150 0"
         >
     </a-entity>
     </a-nft>

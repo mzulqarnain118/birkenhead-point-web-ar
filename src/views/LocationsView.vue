@@ -66,7 +66,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { ref } from "vue";
 import Floor1SvgManipulation from "./Floor1SvgManipulation.vue";
 import Floor2SvgManipulation from "./Floor2SvgManipulation.vue";
 import Floor3SvgManipulation from "./Floor3SvgManipulation.vue";
@@ -77,21 +77,22 @@ const components = {
   2: Floor3SvgManipulation,
   3: Floor4SvgManipulation,
 };
+
 const tabsData = [
-  { id: "first-floor", label: "1st Floor" },
-  { id: "second-floor", label: "2nd Floor" },
-  { id: "third-floor", label: "3rd Floor" },
-  { id: "parking", label: "Parking" },
+  { id: "first-floor", label: "Ground" },
+  { id: "second-floor", label: "Level 1" },
+  { id: "third-floor", label: "Level 2" },
+  { id: "parking", label: "Level 3" },
 ];
 
 const activeTabIndex = ref(0);
 const imageCredits = [
   [
-    "Ground floor - on the pillar near Col",
-    "Ground floor - on the wall near Panda",
+    "Ground - on the pillar near Col",
+    "Ground - on the wall near Panda",
   ],
   [
-    "Level 1 - Next to the arch in the foo court",
+    "Level 1 - Next to the arch in the food court",
     "Level 1 - On the pillar near Lorna Jane",
     "Level 1 - On the pillar near NIKE",
     "Level 1 - On the wall next to Spotlight",
@@ -118,9 +119,6 @@ const getSelecetedMarkerDetails = (point) => {
   if (matchingCredits) {
     selectedMarker.value = matchingCredits[point];
     selectedMarkerIndex.value = point;
-  } else {
-    selectedMarkerIndex.value = point;
-    selectedMarker.value = "Ground floor - on the pillar near Col";
   }
 };
 </script>
