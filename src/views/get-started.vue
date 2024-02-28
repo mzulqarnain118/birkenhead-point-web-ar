@@ -15,30 +15,30 @@ const next = () => {
         <p>Birkenhead Point Augmented Reality Experience</p>
       </div>
       </div>
-	<h1>See history come to life in Immersive AR</h1>
-	<p>Birkenhead point has a rich and diverse history, spanning thousands of years. Now you can delve into moments from our past like never before.</p>
-	<p>There are 10 ar activation points around the centre, each with a different image and story to explore.</p>
+	<!-- <h1>See history come to life in Immersive AR</h1> -->
+	<p>Birkenhead Point has a rich and diverse history, spanning thousands of years. Now you can delve into moments from our past like never before.</p>
+	<p>There are 10 AR activation points around the centre, each with a unique image and story to explore.</p>
     <div class="how-it-works">
     	<h6>How it works</h6>
     	<div class="d-flex align-items-center">
 			<img src="../assets/images/step-1.png">
 	    	<div class="text">
 	    		<strong>Step 1</strong>
-				<p>Look for the activation cards and scan the QR code to activate the camera.</p>
+				<p>Look for the activation cards around the centre. Use the maps in this app to discover their locations.</p>
 	    	</div>
     	</div>
     	<div class="d-flex align-items-center">
 			<img src="../assets/images/step-2.png">
 	    	<div class="text">
 	    		<strong>Step 2</strong>
-				<p>Scan the QR code to launch the experience.</p>
+				<p>Scan the QR code with your phone’s camera to launch the experience.</p>
 	    	</div>
     	</div>
     	<div class="d-flex align-items-center">
 			<img src="../assets/images/step-3.png">
 	    	<div class="text">
 	    		<strong>Step 3</strong>
-				<p>Point your camera at the unique image marker and watch it come to life.</p>
+				<p>Point your camera at the activation card and watch the image come to life.</p>
 	    	</div>
     	</div>
     </div>

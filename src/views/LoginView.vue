@@ -5,11 +5,8 @@
         <img width="220" src="../assets/images/BHP_Logo.gif" />
         <p class="m-0 m-auto text-center">Birkenhead Point Augmented Reality Experience</p>
       </div>
-      <h1>WELCOME TO BHP AR EXPERIENCE!</h1>
-      <p>
-        See Birkenhead Point's history come to life in immersive augmented
-        reality!
-      </p>
+      <h1>See Birkenhead Point's history come to life in immersive augmented reality</h1>
+      <p>Enter your name and email address to launch the experience.</p>
       <form @submit.prevent="register" action="get-started.html" class="m-0">
         <div class="form-floating">
           <input
@@ -39,7 +36,7 @@
               required
             />
             <label class="form-check-label mt-0" for="disabledFieldsetCheck">
-              I agree to the <a href="https://www.mirvac.com/privacy-policy" target="_blank">BHP Privacy Policy</a> and
+              I agree to the <a href="https://www.mirvac.com/privacy-policy" target="_blank">Privacy Policy</a> and
               <a href="https://www.mirvac.com/conditions-of-use" target="_blank">Terms and Conditions</a>
             </label>
           </div>
