@@ -18,6 +18,7 @@
             class="form-control"
             id="email-address"
             name="email"
+            placeholder="Email Address"
             required
           />
           <label for="email">Email Address</label>
