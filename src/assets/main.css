@@ -189,8 +189,8 @@ p {
   background-color: transparent !important;
 /*  opacity: 0.8;*/
 }
-.login input {
-  background-color: transparent !important;
+.login .form-control {
+  background-color: transparent;
   border: none;
   color: var(--White) !important;
 /*  padding-left: 0;
