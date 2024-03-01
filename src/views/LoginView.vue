@@ -10,6 +10,18 @@
       <form @submit.prevent="register" action="get-started.html" class="m-0">
         <div class="form-floating">
           <input
+            type="text"
+            v-model="name"
+            class="form-control"
+            id="name"
+            name="name"
+            placeholder="Name"
+            required
+          />
+          <label for="name">Name</label>
+        </div>
+        <div class="form-floating">
+          <input
             type="email"
             v-model="email"
             class="form-control"
@@ -19,13 +31,6 @@
             required
           />
           <label for="email">Email Address</label>
-          <input
-            type="password"
-            v-model="password"
-            placeholder="Password"
-            hidden
-            required
-          />
         </div>
         <div>
           <div class="form-check text-left d-flex align-items-center ps-0">
