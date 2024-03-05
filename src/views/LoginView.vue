@@ -32,20 +32,29 @@
           />
           <label for="email">Email Address</label>
         </div>
-        <div>
+        <div class="form-check text-left d-flex align-items-center ps-0 mb-3">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="pp--t-and-c"
+            id="disabledFieldsetCheck"
+            required
+          />
+          <label class="form-check-label mt-0" for="pp--t-and-c">
+            I agree to the <a href="https://www.mirvac.com/privacy-policy" target="_blank">Privacy Policy</a> and
+            <a href="https://www.mirvac.com/conditions-of-use" target="_blank">Terms and Conditions</a>
+          </label>
+        </div>
           <div class="form-check text-left d-flex align-items-center ps-0">
             <input
               class="form-check-input"
               type="checkbox"
-              id="disabledFieldsetCheck"
+              name="receive-communication"
+              id="receive-communication"
               required
             />
-            <label class="form-check-label mt-0" for="disabledFieldsetCheck">
-              I agree to the <a href="https://www.mirvac.com/privacy-policy" target="_blank">Privacy Policy</a> and
-              <a href="https://www.mirvac.com/conditions-of-use" target="_blank">Terms and Conditions</a>
-            </label>
+            <label class="form-check-label mt-0" for="receive-communication">I opt in to receiving communication from Birkenhead Point</label>
           </div>
-        </div>
         <div class="text-center">
           <button type="submit" class="btn btn-primary">Continue</button>
         </div>
