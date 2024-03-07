@@ -1,11 +1,16 @@
 <template>
   <div class="screen">
     <div class="screen-wrapper">
-    <div class="logo d-flex flex-column align-items-center">
+      <div class="logo d-flex flex-column align-items-center">
         <img width="220" src="../assets/images/BHP_Logo.gif" />
-        <p class="m-0 m-auto text-center">Birkenhead Point Augmented Reality Experience</p>
+        <p class="m-0 m-auto text-center">
+          Birkenhead Point Augmented Reality Experience
+        </p>
       </div>
-      <h1>See Birkenhead Point's history come to life in immersive augmented reality</h1>
+      <h1>
+        See Birkenhead Point's history come to life in immersive augmented
+        reality
+      </h1>
       <p>Enter your name and email address to launch the experience.</p>
       <form @submit.prevent="register" action="get-started.html" class="m-0">
         <div class="form-floating">
@@ -41,23 +46,31 @@
             required
           />
           <label class="form-check-label mt-0" for="pp--t-and-c">
-            I agree to the <a href="https://www.mirvac.com/privacy-policy" target="_blank">Privacy Policy</a> and
-            <a href="https://www.mirvac.com/conditions-of-use" target="_blank">Terms and Conditions</a>
+            I agree to the
+            <a href="https://www.mirvac.com/privacy-policy" target="_blank"
+              >Privacy Policy</a
+            >
+            and
+            <a href="https://www.mirvac.com/conditions-of-use" target="_blank"
+              >Terms and Conditions</a
+            >
           </label>
         </div>
-          <div class="form-check text-left d-flex align-items-center ps-0">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              name="receive-communication"
-              id="receive-communication"
-              required
-            />
-            <label class="form-check-label mt-0" for="receive-communication">I opt in to receiving communication from Birkenhead Point</label>
-          </div>
+        <div class="form-check text-left d-flex align-items-center ps-0">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="receive-communication"
+            id="receive-communication"
+          />
+          <label class="form-check-label mt-0" for="receive-communication"
+            >I opt in to receiving communication from Birkenhead Point</label
+          >
+        </div>
         <div class="text-center">
-          <button type="submit" class="btn btn-primary">  <LoaderVue v-if="loading" /> 
-    <span v-else>Continue</span></button>
+          <button type="submit" class="btn btn-primary">
+            <LoaderVue v-if="loading" /> <span v-else>Continue</span>
+          </button>
         </div>
       </form>
       <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
@@ -88,24 +101,28 @@ const register = async () => {
 
   try {
     const response = await auth(email.value, password.value);
-      loading.value = true;
+    loading.value = true;
     if (response?.user?.accessToken) {
       loading.value = false;
+      console.log(response.user);
       setLocal("token", response.user.accessToken); // Save token in localStorage
       router.push("/get-started"); // Redirect to the next page
     } else {
       errorMessage.value = "Incorrect email or password"; // Show error for incorrect info
     }
   } catch (error) {
-    if (error.code === 'auth/email-already-in-use') {
-                loading.value = true;
-       const response = await signInWithEmailPassword(email.value, password.value);
+    if (error.code === "auth/email-already-in-use") {
+      loading.value = true;
+      const response = await signInWithEmailPassword(
+        email.value,
+        password.value
+      );
 
       if (response?.user?.accessToken) {
-                loading.value = false;
-      setLocal("token", response.user.accessToken); // Save token in localStorage
-      router.push("/get-started");
-    }
+        loading.value = false;
+        setLocal("token", response.user.accessToken); // Save token in localStorage
+        router.push("/get-started");
+      }
     }
     errorMessage.value = error.message;
   }

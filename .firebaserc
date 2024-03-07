@@ -1,5 +1,5 @@
 {
   "projects": {
-    "default": "birkenhead-point-ar-web" //your-firebase-project-id
+    "default": "living-history-bhp"
   }
 }

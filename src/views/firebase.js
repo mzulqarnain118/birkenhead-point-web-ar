@@ -4,20 +4,22 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
 // Replace with your Firebase project config
 const firebaseConfig = {
-  apiKey: "AIzaSyArw93JoX81W-RfsOp5wQ0LRfv1QFsCFwY",
-  authDomain: "birkenhead-point-ar.firebaseapp.com",
-  projectId: "birkenhead-point-ar",
-  storageBucket: "birkenhead-point-ar.appspot.com",
-  messagingSenderId: "1078690571412",
-  appId: "1:1078690571412:web:4636d59f1bb061b3950081",
-  measurementId: "G-S3FQ1MZ82V",
+  apiKey: "AIzaSyAb72EuYMvDUoFAf7vSYMF4WFHDdwnyrYc",
+  authDomain: "living-history-bhp.firebaseapp.com",
+  projectId: "living-history-bhp",
+  storageBucket: "living-history-bhp.appspot.com",
+  messagingSenderId: "913214181580",
+  appId: "1:913214181580:web:97631b096f518df0b1b269",
+  measurementId: "G-R47JZ12L7Z",
 };
 
 // Initialize Firebase app
 const firebaseApp = initializeApp(firebaseConfig);
+const storage = getStorage(firebaseApp);
 
 // Get Firebase authentication instance
 const auth = getAuth(firebaseApp);
@@ -32,8 +34,4 @@ function signInWithEmailPassword(email, password) {
   return signInWithEmailAndPassword(auth, email, password);
 }
 
-export {
-  auth,
-  signUpWithEmailAndPassword,
-  signInWithEmailPassword
-};
+export { auth, storage, signUpWithEmailAndPassword, signInWithEmailPassword };

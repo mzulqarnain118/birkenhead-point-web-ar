@@ -1,11 +1,18 @@
 <template>
   <div class="map">
     <div class="screen-wrapper">
-      <component :is="components[currentRoute]" />
+      <component
+        :is="components[currentRoute]"
+        :scannedMarkerId="scannedMarkerId"
+        @updatePropEvent="scannedMarkerId = $event"
+      />
+      <h1>{{ scannedMarkerId + "Parent" }}</h1>
+
       <ul
         class="nav nav-tabs position-fixed d-flex align-items-center justify-content-between"
         id="nav-tabs"
         role="tablist"
+        v-if="scannedMarkerId === 0"
       >
         <li
           v-for="tab in tabsData"
@@ -29,11 +36,18 @@
           </button>
         </li>
       </ul>
+      <div v-if="scannedMarkerId !== 0">
+        <div class="position-fixed">
+          <h2>{{ markersInfo[scannedMarkerId - 1]?.split("-")?.[0] }}</h2>
+          <p>{{ markersInfo[scannedMarkerId - 1]?.split("-")?.[1] }}</p>
+        </div>
+        <img class="position-fixed" src="../assets/images/cross.png" />
+      </div>
     </div>
   </div>
 </template>
 <script setup>
-import { ref, watch, onMounted } from "vue";
+import { ref, watch, onMounted, watchEffect } from "vue";
 import { useRouter } from "vue-router";
 import LocationsView from "./LocationsView.vue";
 import ARCamera from "./ARCamera.vue";
@@ -44,6 +58,20 @@ import scanIconOn from "../assets/images/BHP_Phone_Icon_On.png";
 import scanIconOff from "../assets/images/BHP_Phone_Icon_Off.png";
 import infoIconOn from "../assets/images/BHP_Info_Icon_On.png";
 import infoIconOff from "../assets/images/BHP_Info_Icon_Off.png";
+const scannedMarkerId = ref(0);
+
+const markersInfo = [
+  "Ground - on the pillar near Col",
+  "Ground - on the wall near Panda",
+  "Level 1 - Next to the arch in the food court",
+  "Level 1 - On the pillar near Lorna Jane",
+  "Level 1 - On the pillar near NIKE",
+  "Level 1 - On the wall next to Spotlight",
+  "Level 2 - On the pillar near STRAND",
+  "Level 2 - On the pillar near Style Runner",
+  "Level 1 - On the pillar near COACH",
+  "Level 3 - On the pillar near Hype",
+];
 const tabsData = [
   {
     id: "locations-tab",

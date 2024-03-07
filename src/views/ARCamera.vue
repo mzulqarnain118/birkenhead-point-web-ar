@@ -1,84 +1,83 @@
-<style scoped>
-/* Styles */
-.arjs-loader {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 3rem;
-  }
-
-  .arjs-loader div {
-    text-align: center;
-    font-size: 1.25em;
-    color: black;
-  }
-</style> 
 <template>
-  <head>
-    
-  </head>
-<div >
-     <!-- minimal loader shown until image descriptors are loaded. Loading may take a while according to the device computational power -->
-  <div class="arjs-loader">
-    <div>Loading, please wait...</div>
-  </div>
-    <!-- <a-scene
-      vr-mode-ui="enabled: false;"
-      renderer="logarithmicDepthBuffer: true;"
-      embedded
-      arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
-    >
-      <a-nft
-             type='nft' url='/public/trex'
-            smooth='true' smoothCount='10' smoothTolerance='0.01' smoothThreshold='5'
-      >
-        <a-entity
-                gltf-model='/public/scene.gltf'
-          scale="5 5 5"
-          position="50 150 0"
-        >
-        </a-entity>
-      </a-nft>
-      <a-entity camera></a-entity>
-      <a-entity
-        id="outputText"
-        position="0 0.5 -1"
-        text="value: QR Code data will appear here; align: center; width: 6"
-      ></a-entity>
-    </a-scene> -->
-    <a-scene
+  <div class="screen position-fixed">
+    <div class="screen-wrapper">
+      <div class="arjs-loader">
+        <div>Loading, please wait...</div>
+      </div>
+      <a-scene
         vr-mode-ui="enabled: false;"
         renderer="logarithmicDepthBuffer: true;"
-        embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
-        <!-- use rawgithack to retrieve the correct url for nft marker (see 'trex' below) -->
-        <a-nft
-            type='nft' 
-            url='/public/trex/trex'
-      smooth="true"
-      smoothCount="10"
-      smoothTolerance=".01"
-      smoothThreshold="5"
-    >
-    <a-entity
-        gltf-model='/public/scene.gltf'
-       scale="5 5 5"
-        position="50 150 0"
-        >
-    </a-entity>
-    </a-nft>
-    <a-entity camera></a-entity>
-    </a-scene>
+        arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+      >
+        <a-assets>
+          <template v-for="marker in markers" :key="marker.id">
+            <img
+              :id="'image' + marker.id"
+              crossorigin="anonymous"
+              :src="`https://firebasestorage.googleapis.com/v0/b/living-history-bhp.appspot.com/o/Target_Objects%2FLocation_${marker.id}_0046.png?alt=media&token=4f4cfc21-248a-4edb-a964-1cf41db59915`"
+            />
+          </template>
+        </a-assets>
+
+        <template v-for="marker in markers" :key="marker.id">
+          <a-nft
+            type="nft"
+            :url="`/Floor_QR/location${marker.id}/location${marker.id}`"
+            smooth="true"
+            smoothCount="10"
+            smoothTolerance=".01"
+            smoothThreshold="5"
+            emitevents="true"
+            :id="'myMarker' + marker.id"
+            registerevents
+          >
+            <a-image
+              :src="'#image' + marker.id"
+              width="600px"
+              height="600px"
+              position="300 0 0"
+              rotation="90 0 0"
+            ></a-image>
+          </a-nft>
+        </template>
+
+        <a-entity camera></a-entity>
+      </a-scene>
+    </div>
   </div>
 </template>
 
 <script setup>
-// import 'aframe';
-// import 'ar.js';
+import { ref } from "firebase/storage";
+import { storage } from "./firebase";
+const { scannedMarkerId } = defineProps(["scannedMarkerId"]);
+const emits = defineEmits(["update:scannedMarkerId", "updatePropEvent"]);
+const updateScannedMarkerId = (value) => {
+  emits("updatePropEvent", value);
+};
 
+const markers = Array.from({ length: 10 }, (_, index) => ({
+  id: index + 1,
+  title: `Location ${index + 1}`,
+  description: `Description for Location ${index + 1}`,
+}));
+
+AFRAME.registerComponent("registerevents", {
+  init: function () {
+    let marker = this.el;
+
+    marker.addEventListener("markerFound", function () {
+      const markerId = marker.id;
+      console.log("markerFound", markerId, "===========", +markerId.slice(8));
+      updateScannedMarkerId(+markerId.slice(8));
+    });
+
+    marker.addEventListener("markerLost", function () {
+      const markerId = marker.id;
+      updateScannedMarkerId(0);
+      console.log("markerLost", markerId);
+      // TODO: Add your own code here to react to the marker being lost.
+    });
+  },
+});
 </script>
