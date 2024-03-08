@@ -25,7 +25,7 @@
             :data-bs-target="tab.target"
             type="button"
             role="tab"
-            @click="tab.route !== 'scan-qr-code' && navigateTo(tab.route)"
+            @click="navigateTo(tab.route)"
             :aria-controls="tab.id"
             :aria-selected="tab.route === currentRoute"
           >
