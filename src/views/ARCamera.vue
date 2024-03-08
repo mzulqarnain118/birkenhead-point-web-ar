@@ -14,7 +14,7 @@
             <img
               :id="'image' + marker.id"
               crossorigin="anonymous"
-              :src="`https://firebasestorage.googleapis.com/v0/b/living-history-bhp.appspot.com/o/Target_Objects%2FLocation_${marker.id}_0046.png?alt=media&token=4f4cfc21-248a-4edb-a964-1cf41db59915`"
+              :src="`/Target_Objects/Location_${marker.id}_0046.png`"
             />
           </template>
         </a-assets>

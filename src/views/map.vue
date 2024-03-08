@@ -6,8 +6,6 @@
         :scannedMarkerId="scannedMarkerId"
         @updatePropEvent="scannedMarkerId = $event"
       />
-      <h1>{{ scannedMarkerId + "Parent" }}</h1>
-
       <ul
         class="nav nav-tabs position-fixed d-flex align-items-center justify-content-between"
         id="nav-tabs"
@@ -27,7 +25,7 @@
             :data-bs-target="tab.target"
             type="button"
             role="tab"
-            @click="navigateTo(tab.route)"
+            @click="tab.route !== 'scan-qr-code' && navigateTo(tab.route)"
             :aria-controls="tab.id"
             :aria-selected="tab.route === currentRoute"
           >
@@ -36,18 +34,20 @@
           </button>
         </li>
       </ul>
-      <div v-if="scannedMarkerId !== 0">
-        <div class="position-fixed">
+      <!-- <div class="location-details" v-if="scannedMarkerId !== 0">
+        <div
+          class="position-fixed d-flex flex-col align-items-start justify-content-end"
+        >
           <h2>{{ markersInfo[scannedMarkerId - 1]?.split("-")?.[0] }}</h2>
           <p>{{ markersInfo[scannedMarkerId - 1]?.split("-")?.[1] }}</p>
         </div>
         <img class="position-fixed" src="../assets/images/cross.png" />
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
 <script setup>
-import { ref, watch, onMounted, watchEffect } from "vue";
+import { ref, watch, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import LocationsView from "./LocationsView.vue";
 import ARCamera from "./ARCamera.vue";
