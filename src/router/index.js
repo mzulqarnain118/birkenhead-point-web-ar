@@ -77,12 +77,17 @@ const router = createRouter({
 
 // Navigation guard to check authentication status
 router.beforeEach((to, from, next) => {
-  const isAuthenticated = getLocal('token'); // Implement your own authentication check
+  const isAuthenticated = getLocal("token"); // Implement your own authentication check
 
   if (to.meta.requiresAuth && !isAuthenticated) {
-    // If the route requires authentication and the user is not authenticated, redirect to the login page
+    // If the route requires authentication and the user is not authenticated
+    if (to.path === "/scan-qr-code") {
+      // Save the scanned URL in localStorage
+      localStorage.setItem("scannedUrl", "/scan-qr-code");
+    }
+    // Redirect to the login page
     next({ name: "LoginView" });
-  } else if (to.name === 'LoginView' && isAuthenticated) {
+  } else if (to.name === "LoginView" && isAuthenticated) {
     // If the user is authenticated and tries to access the login page, redirect them back to the home page
     router.go(-1);
   } else {
@@ -90,6 +95,5 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
-
 
 export default router;

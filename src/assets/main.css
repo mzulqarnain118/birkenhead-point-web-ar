@@ -644,3 +644,8 @@ p {
   width: 64px;
   border-radius: 16px;
 }
+.cross-icon {
+  width: 48px !important;
+  top: 64px !important;
+  right: 0 !important;
+}

@@ -4,6 +4,7 @@
       <div class="arjs-loader">
         <div>Loading, please wait...</div>
       </div>
+
       <a-scene
         vr-mode-ui="enabled: false;"
         renderer="logarithmicDepthBuffer: true;"
@@ -41,16 +42,18 @@
           </a-nft>
         </template>
 
-        <a-entity camera></a-entity>
+        <a-entity camera :active="cameraActive"></a-entity>
       </a-scene>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "firebase/storage";
-import { storage } from "./firebase";
-const { scannedMarkerId } = defineProps(["scannedMarkerId"]);
+const { scannedMarkerId, cameraActive } = defineProps([
+  "scannedMarkerId",
+  "cameraActive",
+]);
+
 const emits = defineEmits(["update:scannedMarkerId", "updatePropEvent"]);
 const updateScannedMarkerId = (value) => {
   emits("updatePropEvent", value);
@@ -61,6 +64,8 @@ const markers = Array.from({ length: 10 }, (_, index) => ({
   title: `Location ${index + 1}`,
   description: `Description for Location ${index + 1}`,
 }));
+console.log("🚀 ~ cameraActive:", cameraActive);
+console.log("🚀 ~ scannedMarkerId:", scannedMarkerId);
 
 AFRAME.registerComponent("registerevents", {
   init: function () {

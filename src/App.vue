@@ -1,29 +1,19 @@
 <script setup>
-import { RouterLink,useRouter, RouterView } from "vue-router";
-import Login from "./views/LoginView.vue";
-import GetStarted from "./views/get-started.vue";
-import LoginView from "./views/LoginView.vue";
-import { watch} from 'vue';
+import { useRouter, RouterView } from "vue-router";
+import { watch } from "vue";
 
 const router = useRouter();
 
-watch(() => router.currentRoute.value.path, (newPath) => {
-  document.body.setAttribute("class", newPath.slice(1))
-});
+watch(
+  () => router.currentRoute.value.path,
+  (newPath) => {
+    document.body.setAttribute("class", newPath.slice(1));
+  }
+);
 </script>
 
 <template>
-  <!-- <div>
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/login">Login</RouterLink>
-      </nav>
-    </div> -->
-  <RouterView /> 
-<!-- <Map/> -->
+  <RouterView />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

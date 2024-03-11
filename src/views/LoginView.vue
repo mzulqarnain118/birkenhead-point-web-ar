@@ -93,6 +93,7 @@ const password = ref("12345678"); // Set default value for the password
 const errorMessage = ref("");
 const loading = ref("");
 const router = useRouter();
+const scannedURL = localStorage.getItem("scannedUrl");
 
 const register = async () => {
   const auth = (await getLocal("token"))
@@ -106,7 +107,7 @@ const register = async () => {
       loading.value = false;
       console.log(response.user);
       setLocal("token", response.user.accessToken); // Save token in localStorage
-      router.push("/get-started"); // Redirect to the next page
+      router.push(scannedURL ?? "/get-started"); // Redirect to the next page
     } else {
       errorMessage.value = "Incorrect email or password"; // Show error for incorrect info
     }
@@ -121,7 +122,7 @@ const register = async () => {
       if (response?.user?.accessToken) {
         loading.value = false;
         setLocal("token", response.user.accessToken); // Save token in localStorage
-        router.push("/get-started");
+        router.push(scannedURL ?? "/get-started"); // Redirect to the next page
       }
     }
     errorMessage.value = error.message;

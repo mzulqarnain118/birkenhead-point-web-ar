@@ -1,6 +1,6 @@
 {
   "projects": {
-    "prod": "living-history-bhp"
+    "default": "birkenhead-point-ar-web"
   },
   "targets": {},
   "etags": {}
