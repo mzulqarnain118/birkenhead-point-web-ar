@@ -6,6 +6,7 @@
         :scannedMarkerId="scannedMarkerId"
         @updatePropEvent="scannedMarkerId = $event"
       />
+    <div>
       <ul
         class="nav nav-tabs position-fixed d-flex align-items-center justify-content-between"
         id="nav-tabs"
@@ -34,6 +35,7 @@
           </button>
         </li>
       </ul>
+    </div>
       <img
         class="cross-icon"
         @click="toggleCamera"
