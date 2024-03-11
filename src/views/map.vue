@@ -4,7 +4,6 @@
       <component
         :is="components[currentRoute]"
         :scannedMarkerId="scannedMarkerId"
-        :cameraActive="cameraActive"
         @updatePropEvent="scannedMarkerId = $event"
       />
       <ul
@@ -39,15 +38,16 @@
         class="cross-icon"
         @click="toggleCamera"
         src="../assets/images/cross.png"
+        v-if="currentRoute === 'scan-qr-code'"
       />
-      <!-- <div class="location-details" v-if="scannedMarkerId !== 0">
+      <div class="location-details" v-if="scannedMarkerId !== 0">
         <div
           class="position-fixed d-flex flex-col align-items-start justify-content-end"
         >
           <h2>{{ markersInfo[scannedMarkerId - 1]?.split("-")?.[0] }}</h2>
           <p>{{ markersInfo[scannedMarkerId - 1]?.split("-")?.[1] }}</p>
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
@@ -64,10 +64,8 @@ import scanIconOff from "../assets/images/BHP_Phone_Icon_Off.png";
 import infoIconOn from "../assets/images/BHP_Info_Icon_On.png";
 import infoIconOff from "../assets/images/BHP_Info_Icon_Off.png";
 const scannedMarkerId = ref(0);
-const cameraActive = ref(true);
 const toggleCamera = () => {
-  cameraActive.value = !cameraActive.value;
-  alert(cameraActive.value);
+  window.location.href = "/map";
 };
 const markersInfo = [
   "Ground - on the pillar near Col",
@@ -125,6 +123,6 @@ watch(
   }
 );
 const navigateTo = (route) => {
-  router.push("/" + route);
+  window.location.href = "/" + route;
 };
 </script>

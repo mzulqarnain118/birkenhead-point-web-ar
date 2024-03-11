@@ -87,9 +87,9 @@ router.beforeEach((to, from, next) => {
     }
     // Redirect to the login page
     next({ name: "LoginView" });
-  } else if (to.name === "LoginView" && isAuthenticated) {
+  } else if (["/login", "", "/"].includes(to.path) && isAuthenticated) {
     // If the user is authenticated and tries to access the login page, redirect them back to the home page
-    router.go(-1);
+    router.push("/get-started");
   } else {
     // If the route does not require authentication or the user is authenticated, proceed to the route
     next();

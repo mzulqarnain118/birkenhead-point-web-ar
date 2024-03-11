@@ -42,17 +42,14 @@
           </a-nft>
         </template>
 
-        <a-entity camera :active="cameraActive"></a-entity>
+        <a-entity camera></a-entity>
       </a-scene>
     </div>
   </div>
 </template>
 
 <script setup>
-const { scannedMarkerId, cameraActive } = defineProps([
-  "scannedMarkerId",
-  "cameraActive",
-]);
+const { scannedMarkerId } = defineProps(["scannedMarkerId"]);
 
 const emits = defineEmits(["update:scannedMarkerId", "updatePropEvent"]);
 const updateScannedMarkerId = (value) => {
@@ -64,8 +61,6 @@ const markers = Array.from({ length: 10 }, (_, index) => ({
   title: `Location ${index + 1}`,
   description: `Description for Location ${index + 1}`,
 }));
-console.log("🚀 ~ cameraActive:", cameraActive);
-console.log("🚀 ~ scannedMarkerId:", scannedMarkerId);
 
 AFRAME.registerComponent("registerevents", {
   init: function () {
