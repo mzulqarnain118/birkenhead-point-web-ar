@@ -1104,7 +1104,9 @@
 </template>
 
 <script setup>
-const {getSelecetedMarkerDetails} = defineProps(['getSelecetedMarkerDetails'])
+const { getSelecetedMarkerDetails } = defineProps([
+  "getSelecetedMarkerDetails",
+]);
 </script>
 
 <style scoped>

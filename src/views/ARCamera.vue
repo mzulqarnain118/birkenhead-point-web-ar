@@ -23,7 +23,7 @@
         <template v-for="marker in markers" :key="marker.id">
           <a-nft
             type="nft"
-            :url="`/Floor_QR/location${marker.id}/location${marker.id}`"
+            :url="`/Floor_QR/location${marker.id}/location-${marker.id}`"
             smooth="true"
             smoothCount="10"
             smoothTolerance=".01"

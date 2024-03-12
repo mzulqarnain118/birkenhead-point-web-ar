@@ -81,6 +81,7 @@ body {
   background-repeat: no-repeat !important;
   background-size: cover !important;
   background-position: center top !important;
+  margin-left: 0px !important;
 }
 body.login,
 body.get-started,
