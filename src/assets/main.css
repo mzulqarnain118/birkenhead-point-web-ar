@@ -647,7 +647,8 @@ p {
   border-radius: 16px;
 }
 .cross-icon {
-  width: 48px !important;
-  top: 64px !important;
-  right: 0 !important;
+  position: fixed;
+  width: 48px;
+  top: 64px;
+  right: 24px;
 }
