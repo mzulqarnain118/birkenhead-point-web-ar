@@ -410,7 +410,9 @@ p {
 }
 .map #floor-tabs {
   padding-top: 35px;
-  border: none;
+  border: none;position: fixed;
+  width: calc(100% - 28px);
+  z-index: 1;
 }
 .map #floor-tabs li {
   padding-top: 10px;
@@ -514,7 +516,7 @@ p {
   padding-bottom: 24px;
 }
 .tab-content > .tab-pane > svg {
-  padding: 10% 0;
+  padding: 25% 0;
 }
 .cta-image-credits {
   color: var(--TextColorBlack);
@@ -646,7 +648,15 @@ p {
   border-radius: 16px;
 }
 .cross-icon {
-  width: 48px !important;
-  top: 64px !important;
-  right: 0 !important;
+  position: fixed;
+  width: 48px;
+  top: 64px;
+  right: 24px;
+}
+.a-dialog-text {
+color: var(--TextColorBlack);
+}
+.a-dialog-deny-button, .a-dialog-allow-button {
+  background-color: #ffb1a3;
+  color: var(--TextColorBlack);
 }

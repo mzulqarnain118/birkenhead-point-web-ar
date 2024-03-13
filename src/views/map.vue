@@ -1,17 +1,12 @@
 <template>
   <div class="map">
-    <img
-      class="cross-icon"
-      @click="toggleCamera"
-      src="../assets/images/cross.png"
-      v-if="currentRoute === 'scan-qr-code'"
-    />
     <div class="screen-wrapper">
       <component
         :is="components[currentRoute]"
         :scannedMarkerId="scannedMarkerId"
         @updatePropEvent="scannedMarkerId = $event"
       />
+    <div>
       <ul
         class="nav nav-tabs position-fixed d-flex align-items-center justify-content-between"
         id="nav-tabs"
@@ -40,6 +35,13 @@
           </button>
         </li>
       </ul>
+    </div>
+      <img
+        class="cross-icon"
+        @click="toggleCamera"
+        src="../assets/images/cross.png"
+        v-if="currentRoute === 'scan-qr-code'"
+      />
       <div class="location-details" v-if="scannedMarkerId !== 0">
         <div
           class="position-fixed d-flex flex-col align-items-start justify-content-end"
@@ -123,7 +125,6 @@ watch(
   }
 );
 const navigateTo = (route) => {
-  // window.location.href = "/" + route;
   router.push("/" + route);
 };
 </script>
