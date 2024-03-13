@@ -34,9 +34,9 @@
             <a-image
               :src="'#image' + marker.id"
               width="600px"
-              height="600px"
-              position="300 0 0"
-              rotation="90 0 0"
+              height="300px"
+              position="100 300 -200"
+              rotation="270 0 0"
             ></a-image>
           </a-nft>
         </template>
