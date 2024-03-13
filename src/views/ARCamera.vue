@@ -14,7 +14,6 @@
           <template v-for="marker in markers" :key="marker.id">
             <img
               :id="'image' + marker.id"
-              crossorigin="anonymous"
               :src="`/Target_Objects/Location_${marker.id}.png`"
             />
           </template>
