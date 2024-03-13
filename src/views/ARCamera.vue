@@ -15,7 +15,7 @@
             <img
               :id="'image' + marker.id"
               crossorigin="anonymous"
-              :src="`/Target_Objects/Location_${marker.id}_0046.png`"
+              :src="`/Target_Objects/Location_${marker.id}.png`"
             />
           </template>
         </a-assets>
@@ -23,7 +23,7 @@
         <template v-for="marker in markers" :key="marker.id">
           <a-nft
             type="nft"
-            :url="`/Floor_QR/location${marker.id}/location${marker.id}`"
+            :url="`/Floor_QR/location${marker.id}/location-${marker.id}`"
             smooth="true"
             smoothCount="10"
             smoothTolerance=".01"
@@ -42,13 +42,18 @@
           </a-nft>
         </template>
 
-        <a-entity camera></a-entity>
+        <!-- <a-entity camera></a-entity> -->
       </a-scene>
     </div>
   </div>
 </template>
 
 <script setup>
+import { useMarkerStore } from "../stores/marker";
+const markerStore = useMarkerStore();
+
+const scannedMarkers = markerStore.markers;
+
 const { scannedMarkerId } = defineProps(["scannedMarkerId"]);
 
 const emits = defineEmits(["update:scannedMarkerId", "updatePropEvent"]);
@@ -68,8 +73,10 @@ AFRAME.registerComponent("registerevents", {
 
     marker.addEventListener("markerFound", function () {
       const markerId = marker.id;
+      const markerFilteredId = +markerId.slice(8);
       console.log("markerFound", markerId, "===========", +markerId.slice(8));
-      updateScannedMarkerId(+markerId.slice(8));
+      updateScannedMarkerId(markerFilteredId);
+      markerStore.updateScannedMarkerId(markerFilteredId);
     });
 
     marker.addEventListener("markerLost", function () {

@@ -979,7 +979,15 @@
         </text>
       </g>
     </g>
-    <g @click="getSelecetedMarkerDetails(0)">
+    <!-- <g>
+      <image
+        v-if="markers[0].highlight"
+        width="80"
+        height="80"
+        xlink:href="/Icons/PressedPin.png"
+      />
+    </g> -->
+    <g @click="getSelecetedMarkerDetails(0)" v-if="!markers[0].highlight">
       <path
         class="st10"
         d="M207.7,569.4c0,0.3,0.2,0.1,0.3,0.1c0.6-0.5,1.2-1,1.8-1.5c1-0.8,2.1-1.6,3.1-2.4c0.1-0.1,0.1-0.1,0.2-0.1
@@ -1040,7 +1048,7 @@
 		C211.2,537,210.7,536.6,210.8,536.1z"
       />
     </g>
-    <g @click="getSelecetedMarkerDetails(1)">
+    <g @click="getSelecetedMarkerDetails(1)" v-if="!markers[1].highlight">
       <path
         class="st10"
         d="M348.1,383.9c0,0.3,0.2,0.1,0.3,0.1c0.6-0.5,1.2-1,1.8-1.5c1-0.8,2.1-1.6,3.1-2.4c0.1-0.1,0.1-0.1,0.2-0.1
@@ -1104,7 +1112,16 @@
 </template>
 
 <script setup>
-const {getSelecetedMarkerDetails} = defineProps(['getSelecetedMarkerDetails'])
+import { useMarkerStore } from "../stores/marker";
+const markerStore = useMarkerStore();
+
+const markers = markerStore.markers;
+
+console.log("🚀 ~ markers:", markers, markers[1]);
+
+const { getSelecetedMarkerDetails } = defineProps([
+  "getSelecetedMarkerDetails",
+]);
 </script>
 
 <style scoped>

@@ -87,9 +87,10 @@ import { useRouter } from "vue-router";
 import { ref } from "vue";
 import { getLocal, setLocal } from "../../utils";
 import LoaderVue from "../components/Loader.vue";
+import { PASSWORD } from "../constants.js";
 
 const email = ref("");
-const password = ref("12345678"); // Set default value for the password
+const password = ref(PASSWORD); // Set default value for the password
 const errorMessage = ref("");
 const loading = ref("");
 const router = useRouter();

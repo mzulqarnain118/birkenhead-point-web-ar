@@ -71,6 +71,8 @@ import Floor1SvgManipulation from "./Floor1SvgManipulation.vue";
 import Floor2SvgManipulation from "./Floor2SvgManipulation.vue";
 import Floor3SvgManipulation from "./Floor3SvgManipulation.vue";
 import Floor4SvgManipulation from "./Floor4SvgManipulation.vue";
+import { useMarkerStore } from "../stores/marker";
+const markerStore = useMarkerStore();
 const components = {
   0: Floor1SvgManipulation,
   1: Floor2SvgManipulation,
@@ -87,10 +89,7 @@ const tabsData = [
 
 const activeTabIndex = ref(0);
 const imageCredits = [
-  [
-    "Ground - on the pillar near Col",
-    "Ground - on the wall near Panda",
-  ],
+  ["Ground - on the pillar near Col", "Ground - on the wall near Panda"],
   [
     "Level 1 - Next to the arch in the food court",
     "Level 1 - On the pillar near Lorna Jane",
@@ -119,6 +118,15 @@ const getSelecetedMarkerDetails = (point) => {
   if (matchingCredits) {
     selectedMarker.value = matchingCredits[point];
     selectedMarkerIndex.value = point;
+  }
+  if (activeTabIndex.value === 0) {
+    markerStore.updateMarkedMarkerId(point + 1);
+  } else if (activeTabIndex.value === 1) {
+    markerStore.updateMarkedMarkerId(point + 3);
+  } else if (activeTabIndex.value === 2) {
+    markerStore.updateMarkedMarkerId(point + 7);
+  } else if (activeTabIndex.value === 3) {
+    markerStore.updateMarkedMarkerId(point + 10);
   }
 };
 </script>

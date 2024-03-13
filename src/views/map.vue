@@ -125,6 +125,6 @@ watch(
   }
 );
 const navigateTo = (route) => {
-  window.location.href = "/" + route;
+  router.push("/" + route);
 };
 </script>
