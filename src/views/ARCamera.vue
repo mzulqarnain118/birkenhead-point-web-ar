@@ -15,7 +15,7 @@
             <img
               :id="'image' + marker.id"
               crossorigin="anonymous"
-              :src="`/Target_Objects/Location_${marker.id}_0046@0.5x.png`"
+              :src="`/Target_Objects/Location_${marker.id}.png`"
             />
           </template>
         </a-assets>
@@ -42,19 +42,17 @@
           </a-nft>
         </template>
 
-        <a-entity camera></a-entity>
+        <!-- <a-entity camera></a-entity> -->
       </a-scene>
     </div>
   </div>
 </template>
 
 <script setup>
-import { imgUrl } from "./firebase";
 import { useMarkerStore } from "../stores/marker";
 const markerStore = useMarkerStore();
 
 const scannedMarkers = markerStore.markers;
-console.log("🚀 ~ imgUrl:", imgUrl);
 
 const { scannedMarkerId } = defineProps(["scannedMarkerId"]);
 
