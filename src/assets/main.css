@@ -652,3 +652,10 @@ p {
   top: 64px;
   right: 24px;
 }
+.a-dialog-text {
+color: var(--TextColorBlack);
+}
+.a-dialog-deny-button, .a-dialog-allow-button {
+  background-color: #ffb1a3;
+  color: var(--TextColorBlack);
+}
