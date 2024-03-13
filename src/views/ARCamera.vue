@@ -15,7 +15,7 @@
             <img
               :id="'image' + marker.id"
               crossorigin="anonymous"
-              :src="`/Target_Objects/Location_${marker.id}_0046.png`"
+              :src="`/Target_Objects/Location_${marker.id}_0046@0.5x.png`"
             />
           </template>
         </a-assets>
@@ -49,6 +49,13 @@
 </template>
 
 <script setup>
+import { imgUrl } from "./firebase";
+import { useMarkerStore } from "../stores/marker";
+const markerStore = useMarkerStore();
+
+const scannedMarkers = markerStore.markers;
+console.log("🚀 ~ imgUrl:", imgUrl);
+
 const { scannedMarkerId } = defineProps(["scannedMarkerId"]);
 
 const emits = defineEmits(["update:scannedMarkerId", "updatePropEvent"]);
@@ -68,8 +75,10 @@ AFRAME.registerComponent("registerevents", {
 
     marker.addEventListener("markerFound", function () {
       const markerId = marker.id;
+      const markerFilteredId = +markerId.slice(8);
       console.log("markerFound", markerId, "===========", +markerId.slice(8));
-      updateScannedMarkerId(+markerId.slice(8));
+      updateScannedMarkerId(markerFilteredId);
+      markerStore.updateScannedMarkerId(markerFilteredId);
     });
 
     marker.addEventListener("markerLost", function () {

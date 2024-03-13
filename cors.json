@@ -1,6 +1,6 @@
 [
   {
-    "origin": ["https://localhost:5173"],
+    "origin": ["*"],
     "method": ["GET"],
     "maxAgeSeconds": 3600
   }

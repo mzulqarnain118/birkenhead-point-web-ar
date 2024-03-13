@@ -1,10 +1,11 @@
 import { initializeApp } from "firebase/app";
+import { getStorage, ref, listAll, getDownloadURL } from "firebase/storage";
+
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { getStorage } from "firebase/storage";
 
 // Replace with your Firebase project config
 const firebaseConfig = {
@@ -19,8 +20,31 @@ const firebaseConfig = {
 
 // Initialize Firebase app
 const firebaseApp = initializeApp(firebaseConfig);
-const storage = getStorage(firebaseApp);
+// Initialize Firebase app
 
+const storage = getStorage();
+const imgUrl = getDownloadURL(
+  ref(storage, "Target_Objects/Location_10_0046.png")
+)
+  .then((url) => {
+    // `url` is the download URL for 'images/stars.jpg'
+    // This can be downloaded directly:
+    const xhr = new XMLHttpRequest();
+    xhr.responseType = "blob";
+    xhr.onload = (event) => {
+      const blob = xhr.response;
+    };
+    xhr.open("GET", url);
+    xhr.send();
+
+    return url;
+  })
+
+  .catch((error) => {
+    console.log("🚀 ~ error:", error);
+
+    // Handle any errors
+  });
 // Get Firebase authentication instance
 const auth = getAuth(firebaseApp);
 
@@ -34,4 +58,10 @@ function signInWithEmailPassword(email, password) {
   return signInWithEmailAndPassword(auth, email, password);
 }
 
-export { auth, storage, signUpWithEmailAndPassword, signInWithEmailPassword };
+export {
+  auth,
+  storage,
+  imgUrl,
+  signUpWithEmailAndPassword,
+  signInWithEmailPassword,
+};
