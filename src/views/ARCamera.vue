@@ -60,7 +60,7 @@ const updateScannedMarkerId = (value) => {
   emits("updatePropEvent", value);
 };
 
-const markers = Array.from({ length: 1 }, (_, index) => ({
+const markers = Array.from({ length: 10 }, (_, index) => ({
   id: index + 1,
   title: `Location ${index + 1}`,
   description: `Description for Location ${index + 1}`,
