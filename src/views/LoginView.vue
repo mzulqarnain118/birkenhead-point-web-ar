@@ -106,7 +106,6 @@ const register = async () => {
     loading.value = true;
     if (response?.user?.accessToken) {
       loading.value = false;
-      console.log(response.user);
       setLocal("token", response.user.accessToken); // Save token in localStorage
       router.push(scannedURL ?? "/get-started"); // Redirect to the next page
     } else {
