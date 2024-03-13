@@ -23,7 +23,7 @@
         <template v-for="marker in markers" :key="marker.id">
           <a-nft
             type="nft"
-            :url="`/Floor_QR/location${marker.id}/location-${marker.id}`"
+            :url="`/Floor_QR/location${marker.id}/Location-${marker.id}`"
             smooth="true"
             smoothCount="10"
             smoothTolerance=".01"
@@ -61,7 +61,7 @@ const updateScannedMarkerId = (value) => {
   emits("updatePropEvent", value);
 };
 
-const markers = Array.from({ length: 10 }, (_, index) => ({
+const markers = Array.from({ length: 1 }, (_, index) => ({
   id: index + 1,
   title: `Location ${index + 1}`,
   description: `Description for Location ${index + 1}`,

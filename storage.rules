@@ -3,9 +3,6 @@ service firebase.storage {
     match /{allPaths=**} {
       allow read;
       allow write;
-
-      // Enable CORS
-      allow cors;
     }
   }
 }
