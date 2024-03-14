@@ -69,11 +69,25 @@ const imageCredits = [
             <h4>{{ item.title || `Image ${index + 1}: (Timeline and AR)` }}</h4>
             <a href="javascript:void(0)">{{ item.desc }}</a>
           </div>
-          <img :src="`/ImageCredits/Image${index + 1}.png`" />
+          <img
+            :class="index === 8 ? 'portrait-img' : 'landscape-img'"
+            :src="`/ImageCredits/Image${index + 1}.png`"
+          />
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.portrait-img {
+  width: 100px;
+  height: 64px;
+  border-radius: 16px !important;
+}
+.landscape-img {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px !important;
+}
+</style>

@@ -643,11 +643,7 @@ p {
   line-height: 14px;
   letter-spacing: -0.006px;
 }
-.screen.image-credits img {
-  width: 64px !important;
-  height: 64px !important;
-  border-radius: 16px !important;
-}
+
 .cross-icon {
   position: fixed;
   width: 48px;
