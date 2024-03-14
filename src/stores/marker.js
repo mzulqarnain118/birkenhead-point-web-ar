@@ -4,9 +4,9 @@ export const useMarkerStore = defineStore("marker", {
   state: () => ({
     markers: Array.from({ length: 10 }, (_, index) => ({
       id: index + 1,
-      scanned: true,
-      marked: true,
-      highlight: true,
+      scanned: false,
+      marked: false,
+      highlight: false,
     })),
   }),
   actions: {
@@ -16,6 +16,9 @@ export const useMarkerStore = defineStore("marker", {
         marker.scanned = true;
         this.updateHighlightStatus(marker);
       }
+    },
+    updateMarkers(persistedMarkers) {
+      this.markers = persistedMarkers;
     },
     updateMarkedMarkerId(id) {
       const marker = this.markers.find((m) => m.id === id);

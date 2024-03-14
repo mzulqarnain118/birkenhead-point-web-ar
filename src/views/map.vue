@@ -54,6 +54,8 @@
 <script setup>
 import { ref, watch, onMounted } from "vue";
 import { useRouter } from "vue-router";
+import { useMarkerStore } from "../stores/marker";
+const markerStore = useMarkerStore();
 import LocationsView from "./LocationsView.vue";
 import ARCamera from "./ARCamera.vue";
 import AboutView from "./AboutView.vue";
@@ -63,6 +65,7 @@ import scanIconOn from "../assets/images/BHP_Phone_Icon_On.png";
 import scanIconOff from "../assets/images/BHP_Phone_Icon_Off.png";
 import infoIconOn from "../assets/images/BHP_Info_Icon_On.png";
 import infoIconOff from "../assets/images/BHP_Info_Icon_Off.png";
+import { getLocal, setLocal } from "../../utils";
 const scannedMarkerId = ref(0);
 const toggleCamera = () => {
   window.location.href = "/map";
@@ -115,6 +118,10 @@ const router = useRouter();
 const currentRoute = ref("");
 onMounted(() => {
   currentRoute.value = router.currentRoute.value.path.slice(1);
+  const persistedMarkers = getLocal("markers");
+  if (persistedMarkers) {
+    markerStore.updateMarkers(persistedMarkers);
+  }
 });
 watch(
   () => router.currentRoute.value.path,
@@ -123,6 +130,7 @@ watch(
   }
 );
 const navigateTo = (route) => {
+  setLocal("markers", markerStore.markers);
   window.location.href = "/" + route;
 };
 </script>

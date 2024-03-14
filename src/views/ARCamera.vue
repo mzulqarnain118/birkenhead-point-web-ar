@@ -35,7 +35,7 @@
               :src="'#image' + marker.id"
               width="600px"
               height="300px"
-              position="100 300 -200"
+              position="100 300 0"
               rotation="270 0 0"
             ></a-image>
           </a-nft>
@@ -50,9 +50,6 @@
 <script setup>
 import { useMarkerStore } from "../stores/marker";
 const markerStore = useMarkerStore();
-
-const scannedMarkers = markerStore.markers;
-
 const { scannedMarkerId } = defineProps(["scannedMarkerId"]);
 
 const emits = defineEmits(["update:scannedMarkerId", "updatePropEvent"]);

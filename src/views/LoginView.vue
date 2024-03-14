@@ -90,19 +90,25 @@ import LoaderVue from "../components/Loader.vue";
 import { PASSWORD } from "../constants.js";
 
 const email = ref("");
+const name = ref("");
 const password = ref(PASSWORD); // Set default value for the password
 const errorMessage = ref("");
 const loading = ref("");
 const router = useRouter();
 const scannedURL = localStorage.getItem("scannedUrl");
-
+const isLoggedIn = getLocal("token");
 const register = async () => {
-  const auth = (await getLocal("token"))
-    ? signInWithEmailPassword
-    : signUpWithEmailAndPassword;
-
   try {
-    const response = await auth(email.value, password.value);
+    let response;
+    if (isLoggedIn) {
+      response = await signInWithEmailPassword(email.value, password.value);
+    } else {
+      response = await signUpWithEmailAndPassword(
+        email.value,
+        password.value,
+        name.value
+      );
+    }
     loading.value = true;
     if (response?.user?.accessToken) {
       loading.value = false;

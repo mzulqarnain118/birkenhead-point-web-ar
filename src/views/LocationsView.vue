@@ -73,6 +73,7 @@ import Floor3SvgManipulation from "./Floor3SvgManipulation.vue";
 import Floor4SvgManipulation from "./Floor4SvgManipulation.vue";
 import { useMarkerStore } from "../stores/marker";
 const markerStore = useMarkerStore();
+
 const components = {
   0: Floor1SvgManipulation,
   1: Floor2SvgManipulation,
@@ -88,6 +89,8 @@ const tabsData = [
 ];
 
 const activeTabIndex = ref(0);
+const selectedMarker = ref("");
+const selectedMarkerIndex = ref(null);
 const imageCredits = [
   ["Ground - on the pillar near Col", "Ground - on the wall near Panda"],
   [
@@ -103,8 +106,6 @@ const imageCredits = [
   ],
   ["Level 3 - On the pillar near Hype"],
 ];
-const selectedMarker = ref("");
-const selectedMarkerIndex = ref(null);
 
 const changeTab = (index) => {
   activeTabIndex.value = index;

@@ -410,7 +410,8 @@ p {
 }
 .map #floor-tabs {
   padding-top: 35px;
-  border: none;position: fixed;
+  border: none;
+  position: fixed;
   width: calc(100% - 28px);
   z-index: 1;
 }
@@ -611,7 +612,7 @@ p {
   background: none;
 }
 .screen.image-credits .screen-wrapper {
-  padding: 64px 16px 0;
+  padding: 16px 16px 0;
   color: var(--TextColorBlack);
 }
 .screen.image-credits .top-card {
@@ -644,8 +645,9 @@ p {
   letter-spacing: -0.006px;
 }
 .screen.image-credits img {
-  width: 64px;
-  border-radius: 16px;
+  width: 64px !important;
+  height: 64px !important;
+  border-radius: 16px !important;
 }
 .cross-icon {
   position: fixed;
@@ -654,9 +656,10 @@ p {
   right: 24px;
 }
 .a-dialog-text {
-color: var(--TextColorBlack);
+  color: var(--TextColorBlack);
 }
-.a-dialog-deny-button, .a-dialog-allow-button {
+.a-dialog-deny-button,
+.a-dialog-allow-button {
   background-color: #ffb1a3;
   color: var(--TextColorBlack);
 }
