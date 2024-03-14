@@ -66,12 +66,13 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import Floor1SvgManipulation from "./Floor1SvgManipulation.vue";
 import Floor2SvgManipulation from "./Floor2SvgManipulation.vue";
 import Floor3SvgManipulation from "./Floor3SvgManipulation.vue";
 import Floor4SvgManipulation from "./Floor4SvgManipulation.vue";
 import { useMarkerStore } from "../stores/marker";
+import { getLocal, setLocal } from "../../utils";
 const markerStore = useMarkerStore();
 
 const components = {
@@ -106,10 +107,16 @@ const imageCredits = [
   ],
   ["Level 3 - On the pillar near Hype"],
 ];
-
+onMounted(() => {
+  const persistedActiveTabIndex = getLocal("activeTabIndex");
+  if (persistedActiveTabIndex) {
+    activeTabIndex.value = persistedActiveTabIndex;
+  }
+});
 const changeTab = (index) => {
   activeTabIndex.value = index;
   selectedMarkerIndex.value = null;
+  setLocal("activeTabIndex", index);
 };
 
 const getSelecetedMarkerDetails = (point) => {

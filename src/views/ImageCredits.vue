@@ -69,7 +69,7 @@ const imageCredits = [
             <h4>{{ item.title || `Image ${index + 1}: (Timeline and AR)` }}</h4>
             <a href="javascript:void(0)">{{ item.desc }}</a>
           </div>
-          <img width="64px" :src="`/ImageCredits/Image${index + 1}.png`" />
+          <img :src="`/ImageCredits/Image${index + 1}.png`" />
         </div>
       </div>
     </div>
