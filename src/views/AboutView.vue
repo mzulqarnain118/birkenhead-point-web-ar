@@ -14,10 +14,8 @@ const goToImageCredits = () => {
   <div>
     <div class="plr-10">
       <div class="logo d-flex flex-column align-items-center">
-        <img width="145" src="../assets/images/BHP_Logo.gif" />
-        <p class="m-0 m-auto text-center">
-          Birkenhead Point Augmented Reality Experience
-        </p>
+        <img width="145" src="../assets/images/BHP_Logo_Without_Text.png" />
+        <p class="text-center">Birkenhead Point Augmented Reality Experience</p>
       </div>
       <p>
         We hope you enjoy exploring the rich and diverse history of the land

@@ -2,10 +2,7 @@
   <div class="screen">
     <div class="screen-wrapper">
       <div class="logo d-flex flex-column align-items-center">
-        <img width="220" src="../assets/images/BHP_Logo.gif" />
-        <p class="m-0 m-auto text-center">
-          Birkenhead Point Augmented Reality Experience
-        </p>
+        <img width="220" src="../assets/images/BHP_Logo.png" />
       </div>
       <h1>
         See Birkenhead Point's history come to life in immersive augmented
@@ -88,7 +85,6 @@ import { ref } from "vue";
 import { getLocal, setLocal } from "../../utils";
 import LoaderVue from "../components/Loader.vue";
 import { PASSWORD } from "../constants.js";
-
 const email = ref("");
 const name = ref("");
 const password = ref(PASSWORD); // Set default value for the password

@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Splash from "../views/Splash.vue";
-import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
 import GetStarted from "../views/get-started.vue";
 import MapView from "../views/map.vue";
@@ -13,15 +12,8 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: "/splash",
-      name: "splash",
-      component: Splash,
-    },
-    {
       path: "/",
-      name: "home",
-      component: HomeView,
-      meta: { requiresAuth: true }, // Mark the route as requiring authentication
+      redirect: "/get-started",
     },
     {
       path: "/login",
@@ -87,9 +79,9 @@ router.beforeEach((to, from, next) => {
     }
     // Redirect to the login page
     next({ name: "LoginView" });
-  } else if (["/login", "", "/"].includes(to.path) && isAuthenticated) {
+  } else if (to.name === "LoginView" && isAuthenticated) {
     // If the user is authenticated and tries to access the login page, redirect them back to the home page
-    router.push("/get-started");
+    router.go(-1);
   } else {
     // If the route does not require authentication or the user is authenticated, proceed to the route
     next();

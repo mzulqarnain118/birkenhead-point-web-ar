@@ -55,7 +55,7 @@ const imageCredits = [
       <div class="top-card d-flex align-items-center justify-content-between">
         <h3>Image Credits</h3>
         <img
-          width="48px"
+          width="48"
           src="../assets/images/cross.png"
           @click="router.go(-1)"
         />

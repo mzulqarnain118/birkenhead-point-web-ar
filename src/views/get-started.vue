@@ -11,8 +11,7 @@ const next = () => {
     <div class="screen-wrapper">
       <div class="d-flex justify-content-center">
         <div class="logo d-flex align-items-center">
-          <img width="80" src="../assets/images/BHP_Logo.gif" />
-          <p>Birkenhead Point Augmented Reality Experience</p>
+          <img width="179" src="../assets/images/BHP_Logo.png" />
         </div>
       </div>
       <p>
