@@ -71,7 +71,7 @@ body.location-details {
   background: url(/src/assets/images/BHP_Home_Image.png);
 }
 body.get-started {
-  height: 100vh;
+  height: 108vh;
 }
 .nav-link {
   color: var(--TextColorBlack);
