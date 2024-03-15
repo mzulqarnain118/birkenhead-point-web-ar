@@ -49,14 +49,11 @@
           v-if="selectedMarkerIndex !== null"
           class="position-fixed info-card d-flex align-items-center"
         >
-          <img
-            width="80"
-            :src="`/Floor/${activeTabIndex + 1}/${selectedMarkerIndex + 1}.png`"
-          />
+          <img width="80" :src="`/LocationPoints/${selectedMarkerIndex}.png`" />
           <div>
-            <p class="strong">{{ selectedMarker.split("-")[0] }}</p>
+            <p class="strong">{{ selectedMarker?.[0] }}</p>
             <p class="text">
-              {{ selectedMarker.split("-")[1] }}
+              {{ selectedMarker?.[1] }}
             </p>
           </div>
         </div>
@@ -73,6 +70,7 @@ import Floor3SvgManipulation from "./Floor3SvgManipulation.vue";
 import Floor4SvgManipulation from "./Floor4SvgManipulation.vue";
 import { useMarkerStore } from "../stores/marker";
 import { getLocal, setLocal } from "../../utils";
+
 const markerStore = useMarkerStore();
 
 const components = {
@@ -92,21 +90,7 @@ const tabsData = [
 const activeTabIndex = ref(0);
 const selectedMarker = ref("");
 const selectedMarkerIndex = ref(null);
-const imageCredits = [
-  ["Ground - on the pillar near Col", "Ground - on the wall near Panda"],
-  [
-    "Level 1 - Next to the arch in the food court",
-    "Level 1 - On the pillar near Lorna Jane",
-    "Level 1 - On the pillar near NIKE",
-    "Level 1 - On the wall next to Spotlight",
-  ],
-  [
-    "Level 2 - On the pillar near STRAND",
-    "Level 2 - On the pillar near Style Runner",
-    "Level 1 - On the pillar near COACH",
-  ],
-  ["Level 3 - On the pillar near Hype"],
-];
+
 onMounted(() => {
   const persistedActiveTabIndex = getLocal("activeTabIndex");
   if (persistedActiveTabIndex) {
@@ -120,23 +104,9 @@ const changeTab = (index) => {
 };
 
 const getSelecetedMarkerDetails = (point) => {
-  const matchingCredits = imageCredits.find(
-    (item, index) => activeTabIndex.value === index
-  );
-  if (matchingCredits) {
-    selectedMarker.value = matchingCredits[point];
-    selectedMarkerIndex.value = point;
-  }
-  if (activeTabIndex.value === 0) {
-    markerStore.updateMarkedMarkerId(point + 1);
-  } else if (activeTabIndex.value === 1) {
-    markerStore.updateMarkedMarkerId(point + 3);
-  } else if (activeTabIndex.value === 2) {
-    markerStore.updateMarkedMarkerId(point + 7);
-  } else if (activeTabIndex.value === 3) {
-    markerStore.updateMarkedMarkerId(point + 10);
-  }
-  console.log(markerStore.markers);
+  selectedMarker.value = markerStore.getMarkerInfoById(point);
+  selectedMarkerIndex.value = point;
+  markerStore.updateMarkedMarkerId(point);
 };
 </script>
 

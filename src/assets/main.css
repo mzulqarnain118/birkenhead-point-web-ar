@@ -301,6 +301,9 @@ p {
   margin-top: 24px;
   margin-bottom: 20px;
 }
+.cursor {
+  cursor: pointer;
+}
 /* .how-it-works:before, .how-it-works:after {
     content: "";
     width: 4px;

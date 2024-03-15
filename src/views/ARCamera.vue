@@ -35,8 +35,8 @@
               :src="'#image' + marker.id"
               width="600px"
               height="300px"
-              position="100 300 0"
-              rotation="270 0 0"
+              position="100 0 0"
+              rotation="-90 0 0"
             ></a-image>
           </a-nft>
         </template>
@@ -54,14 +54,10 @@ const { scannedMarkerId } = defineProps(["scannedMarkerId"]);
 
 const emits = defineEmits(["update:scannedMarkerId", "updatePropEvent"]);
 const updateScannedMarkerId = (value) => {
-  emits("updatePropEvent", value);
+  emits("updatePropEvent", value ? markerStore.getMarkerInfoById(value) : null);
 };
 
-const markers = Array.from({ length: 10 }, (_, index) => ({
-  id: index + 1,
-  title: `Location ${index + 1}`,
-  description: `Description for Location ${index + 1}`,
-}));
+const markers = markerStore.markers;
 
 AFRAME.registerComponent("registerevents", {
   init: function () {
@@ -77,7 +73,7 @@ AFRAME.registerComponent("registerevents", {
 
     marker.addEventListener("markerLost", function () {
       const markerId = marker.id;
-      updateScannedMarkerId(0);
+      updateScannedMarkerId(null);
       console.log("markerLost", markerId);
       // TODO: Add your own code here to react to the marker being lost.
     });

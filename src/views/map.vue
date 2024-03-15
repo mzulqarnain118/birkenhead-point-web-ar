@@ -1,13 +1,5 @@
 <template>
   <div class="map">
-    <button @click="toggleCamera">
-      <img
-        class="cross-icon"
-        src="../assets/images/cross.png"
-        v-if="currentRoute === 'scan-qr-code'"
-      />
-    </button>
-
     <div class="screen-wrapper">
       <component
         :is="components[currentRoute]"
@@ -18,7 +10,7 @@
         class="nav nav-tabs position-fixed d-flex align-items-center justify-content-between"
         id="nav-tabs"
         role="tablist"
-        v-if="scannedMarkerId === 0"
+        v-if="scannedMarkerId === null"
       >
         <li
           v-for="tab in tabsData"
@@ -42,12 +34,18 @@
           </button>
         </li>
       </ul>
-      <div class="location-details" v-if="scannedMarkerId !== 0">
+      <img
+        class="cross-icon cursor"
+        @click="toggleCamera"
+        src="../assets/images/cross.png"
+        v-if="currentRoute === 'scan-qr-code'"
+      />
+      <div class="location-details" v-if="scannedMarkerId !== null">
         <div
           class="position-fixed d-flex flex-col align-items-start justify-content-end"
         >
-          <h2>{{ markersInfo[scannedMarkerId - 1]?.split("-")?.[0] }}</h2>
-          <p>{{ markersInfo[scannedMarkerId - 1]?.split("-")?.[1] }}</p>
+          <h2>{{ scannedMarkerId?.[0] }}</h2>
+          <p>{{ scannedMarkerId?.[1] }}</p>
         </div>
       </div>
     </div>
@@ -68,20 +66,8 @@ import scanIconOff from "../assets/images/BHP_Phone_Icon_Off.png";
 import infoIconOn from "../assets/images/BHP_Info_Icon_On.png";
 import infoIconOff from "../assets/images/BHP_Info_Icon_Off.png";
 import { getLocal, setLocal } from "../../utils";
-const scannedMarkerId = ref(0);
+const scannedMarkerId = ref(null);
 
-const markersInfo = [
-  "Level 3 - On the pillar near Hype",
-  "Level 1 - On the pillar near COACH",
-  "Level 2 - On the pillar near Style Runner",
-  "Level 2 - On the pillar near STRAND",
-  "Level 1 - On the wall next to Spotlight",
-  "Level 1 - On the pillar near Lorna Jane",
-  "Level 1 - On the pillar near NIKE",
-  "Level 1 - Next to the arch in the food court",
-  "Ground - on the wall near Panda",
-  "Ground - on the pillar near Col",
-];
 const tabsData = [
   {
     id: "locations-tab",
