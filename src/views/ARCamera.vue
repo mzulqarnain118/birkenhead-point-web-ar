@@ -66,16 +66,12 @@ AFRAME.registerComponent("registerevents", {
     marker.addEventListener("markerFound", function () {
       const markerId = marker.id;
       const markerFilteredId = +markerId.slice(8);
-      console.log("markerFound", markerId, "===========", +markerId.slice(8));
       updateScannedMarkerId(markerFilteredId);
       markerStore.updateScannedMarkerId(markerFilteredId);
     });
 
     marker.addEventListener("markerLost", function () {
-      const markerId = marker.id;
       updateScannedMarkerId(null);
-      console.log("markerLost", markerId);
-      // TODO: Add your own code here to react to the marker being lost.
     });
   },
 });
