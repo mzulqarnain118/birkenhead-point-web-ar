@@ -9,13 +9,13 @@ import {
 
 // Replace with your Firebase project config
 const firebaseConfig = {
-  apiKey: "AIzaSyCcAezgRG3Q558EPXAjKV5GVcT-6f7Ya7o",
-  authDomain: "birkenhead-point-ar-web.firebaseapp.com",
-  projectId: "birkenhead-point-ar-web",
-  storageBucket: "birkenhead-point-ar-web.appspot.com",
-  messagingSenderId: "480495514261",
-  appId: "1:480495514261:web:d334fa1efe3e9941d2619c",
-  measurementId: "G-6QVKZ6LWHD",
+  apiKey: "AIzaSyAb72EuYMvDUoFAf7vSYMF4WFHDdwnyrYc",
+  authDomain: "living-history-bhp.firebaseapp.com",
+  projectId: "living-history-bhp",
+  storageBucket: "living-history-bhp.appspot.com",
+  messagingSenderId: "913214181580",
+  appId: "1:913214181580:web:97631b096f518df0b1b269",
+  measurementId: "G-R47JZ12L7Z",
 };
 
 // Initialize Firebase app
