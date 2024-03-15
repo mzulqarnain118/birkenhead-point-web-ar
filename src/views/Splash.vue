@@ -1,4 +1,12 @@
-<script setup></script>
+<script setup>
+import { useRouter } from "vue-router";
+import { getLocal } from "../../utils";
+const router = useRouter();
+const isAuthenticated = getLocal("token");
+setTimeout(() => {
+  router.push(isAuthenticated ? "/get-started" : "/login");
+}, 2000);
+</script>
 
 <template>
   <div class="splash">

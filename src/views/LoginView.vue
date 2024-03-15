@@ -6,7 +6,7 @@
       </div>
       <h1>
         See Birkenhead Point's history come to life in immersive augmented
-        reality
+        reality.
       </h1>
       <p>Enter your name and email address to launch the experience.</p>
       <form @submit.prevent="register" action="get-started.html" class="m-0">

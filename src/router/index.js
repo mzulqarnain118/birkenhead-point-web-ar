@@ -12,8 +12,13 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      path: "/splash",
+      name: "splash",
+      component: Splash,
+    },
+    {
       path: "/",
-      redirect: "/get-started",
+      redirect: "/splash",
     },
     {
       path: "/login",
