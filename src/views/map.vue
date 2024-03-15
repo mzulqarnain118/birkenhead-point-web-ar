@@ -1,11 +1,13 @@
 <template>
   <div class="map">
-    <img
-      class="cross-icon"
-      @click="toggleCamera"
-      src="../assets/images/cross.png"
-      v-if="currentRoute === 'scan-qr-code'"
-    />
+    <button @click="toggleCamera">
+      <img
+        class="cross-icon"
+        src="../assets/images/cross.png"
+        v-if="currentRoute === 'scan-qr-code'"
+      />
+    </button>
+
     <div class="screen-wrapper">
       <component
         :is="components[currentRoute]"
@@ -67,20 +69,18 @@ import infoIconOn from "../assets/images/BHP_Info_Icon_On.png";
 import infoIconOff from "../assets/images/BHP_Info_Icon_Off.png";
 import { getLocal, setLocal } from "../../utils";
 const scannedMarkerId = ref(0);
-const toggleCamera = () => {
-  window.location.href = "/map";
-};
+
 const markersInfo = [
-  "Ground - on the pillar near Col",
-  "Ground - on the wall near Panda",
-  "Level 1 - Next to the arch in the food court",
+  "Level 3 - On the pillar near Hype",
+  "Level 1 - On the pillar near COACH",
+  "Level 2 - On the pillar near Style Runner",
+  "Level 2 - On the pillar near STRAND",
+  "Level 1 - On the wall next to Spotlight",
   "Level 1 - On the pillar near Lorna Jane",
   "Level 1 - On the pillar near NIKE",
-  "Level 1 - On the wall next to Spotlight",
-  "Level 2 - On the pillar near STRAND",
-  "Level 2 - On the pillar near Style Runner",
-  "Level 1 - On the pillar near COACH",
-  "Level 3 - On the pillar near Hype",
+  "Level 1 - Next to the arch in the food court",
+  "Ground - on the wall near Panda",
+  "Ground - on the pillar near Col",
 ];
 const tabsData = [
   {
@@ -132,5 +132,8 @@ watch(
 const navigateTo = (route) => {
   setLocal("markers", markerStore.markers);
   window.location.href = "/" + route;
+};
+const toggleCamera = () => {
+  window.location.href = "/map";
 };
 </script>

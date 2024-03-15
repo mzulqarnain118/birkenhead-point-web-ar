@@ -136,6 +136,7 @@ const getSelecetedMarkerDetails = (point) => {
   } else if (activeTabIndex.value === 3) {
     markerStore.updateMarkedMarkerId(point + 10);
   }
+  console.log(markerStore.markers);
 };
 </script>
 
